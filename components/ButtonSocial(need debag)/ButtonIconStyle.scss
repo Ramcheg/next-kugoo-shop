@@ -1,0 +1,12 @@
+.ico-fill {
+    svg {
+        g {
+            path {
+                &:nth-of-type(1) {
+                    fill: inherit;
+                }
+
+            }
+        }
+    }
+}

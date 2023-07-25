@@ -1,0 +1,84 @@
+.home-mob {
+    path {
+        fill: black;
+    }
+
+    &-active {
+        path {
+            fill: #6F73EE;
+        }
+
+        div {
+            color: #6F73EE;
+        }
+    }
+}
+
+.catalog-mob {
+    path {
+        fill: black;
+    }
+
+    &-active {
+        path {
+            fill: #6F73EE;
+        }
+
+        div {
+            color: #6F73EE;
+        }
+    }
+}
+
+.busket-mob {
+    g {
+        stroke: black;
+    }
+
+    &-active {
+        g {
+            stroke: #6F73EE;
+        }
+
+        div {
+            color: #6F73EE;
+        }
+    }
+}
+
+.favorites-mob {
+    path {
+        stroke: black;
+    }
+
+    &-active {
+        path {
+            stroke: #6F73EE;
+        }
+
+        div {
+            color: #6F73EE;
+        }
+    }
+}
+
+.compare-mob {
+
+    path,
+    circle {
+        stroke: black
+    }
+
+
+    &-active {
+
+        path,
+        circle {
+            stroke: #6F73EE;
+        }
+
+        div {
+            color: #6F73EE;
+        }
+    }
+}

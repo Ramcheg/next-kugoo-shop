@@ -1,0 +1,11 @@
+.btn-active {
+    .burgerMenu {
+        span {
+            &:nth-last-of-type(1) {
+                width: .47rem;
+                left: .55rem;
+            }
+        }
+    }
+
+}

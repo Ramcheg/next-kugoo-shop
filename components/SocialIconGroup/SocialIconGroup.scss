@@ -1,0 +1,50 @@
+.socialIcon {
+
+    &:hover {
+        svg {
+            g {
+                path {
+                    transition: all .3s ease-out;
+                }
+            }
+        }
+    }
+
+    &_viber {
+        &:hover {
+            svg {
+                g {
+                    path {
+                        fill: #8E24AA;
+                    }
+                }
+            }
+        }
+    }
+
+    &_whatsapp {
+        &:hover {
+            svg {
+                g {
+                    path {
+                        &:first-child {
+                            fill: #4CAF50;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &_telegram {
+        &:hover {
+            svg {
+                g {
+                    path {
+                        fill: #039BE5;
+                    }
+                }
+            }
+        }
+    }
+}

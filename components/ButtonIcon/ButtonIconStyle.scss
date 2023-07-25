@@ -1,0 +1,82 @@
+.shopping-fill,
+.shopping-hover:hover {
+
+    svg {
+
+        g {
+            transition: all .5s;
+
+
+            path {
+                fill: #6F73EE;
+            }
+
+            &:nth-last-of-type(1) {
+                stroke: #fff;
+            }
+        }
+
+
+    }
+}
+
+
+.heart-lavander {
+    svg {
+        path {
+            &:nth-last-of-type(1) {
+                stroke: #6F73EE;
+            }
+        }
+    }
+}
+
+.heart-fill,
+.heart-hover:hover {
+    svg {
+        transition: all .5s;
+        fill: #6F73EE;
+
+        path {
+            transition: all .5s;
+            fill: #6F73EE;
+        }
+    }
+}
+
+.heart-black {
+    svg {
+        path {
+            &:nth-last-of-type(1) {
+                stroke: #000;
+            }
+        }
+    }
+}
+
+.special-hover:hover {
+    svg {
+        g {
+            transition: all 100ms;
+            stroke: #6F73EE;
+        }
+    }
+}
+
+
+
+
+
+
+// .heart-fill {
+//     svg {
+//         g {
+//             path {
+//                 &:nth-of-type(1) {
+//                     fill: red;
+//                 }
+
+//             }
+//         }
+//     }
+// }

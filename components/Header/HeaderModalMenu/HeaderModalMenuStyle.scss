@@ -1,0 +1,17 @@
+.del {
+    .do {
+        transition: all 1s;
+        opacity: 0;
+        width: 0;
+    }
+
+    &:hover {
+        .do {
+            transition: all .5s;
+            width: 35rem;
+            opacity: 1;
+
+        }
+    }
+
+}

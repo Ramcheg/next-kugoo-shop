@@ -1,0 +1,10 @@
+.plusIcon {
+    &:hover {
+        fill: #5D6C7B;
+
+        path {
+            transition: all .4s ease-out;
+            fill: white;
+        }
+    }
+}
