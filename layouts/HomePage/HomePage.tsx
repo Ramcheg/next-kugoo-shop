@@ -1,3 +1,4 @@
+import { ContainerServices, ProductCard } from "@/components";
 import {
     HomeSlider,
     HomeCreditList,
@@ -14,6 +15,10 @@ export default function HomePage(): JSX.Element {
                 </div>
                 <div className="my-[3rem]">
                     <HomeProducts />
+                </div>
+                <div className="flex gap-7 flex-col md:flex-row justify-between my-14 md:my-28">
+                    <ContainerServices typeComp="model" />
+                    <ContainerServices typeComp="services" />
                 </div>
             </div>
         </>

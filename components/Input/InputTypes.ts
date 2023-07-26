@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, InputHTMLAttributes } from "react";
 
-type InputType = "email" | "text" | "tel";
+type InputType = "email" | "text" | "tel" | "checkbox";
 
 export interface IInputProps
     extends DetailedHTMLProps<
@@ -8,7 +8,7 @@ export interface IInputProps
         HTMLInputElement
     > {
     inputType: InputType;
-    placeholderInput: string;
+    placeholderInput?: string;
     isRequired?: boolean;
     nameInput: string;
 }

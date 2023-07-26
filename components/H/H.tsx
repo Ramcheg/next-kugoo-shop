@@ -35,7 +35,7 @@ export function H({
             return (
                 <h3
                     className={cn(
-                        "text-sm text-center lg:text-2xl 2xl:text-3xl font-semibold",
+                        "text-sm lg:text-2xl 2xl:text-3xl font-semibold",
                         className,
                         {
                             ["text-black"]: color === "black",

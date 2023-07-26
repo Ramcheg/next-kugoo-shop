@@ -7,3 +7,6 @@ export * from "./ButtonIcon/ButtonIcon";
 export * from "./H/H";
 export * from "./ProductCard/ProductCard";
 export * from "./Input/Input";
+export * from "./ContainerServices/ContainerServices";
+export * from "./PayForOneClick/PayForOneClick";
+export * from "./ModalProduct/ModalProduct";

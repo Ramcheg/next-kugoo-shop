@@ -27,7 +27,7 @@ export default function RootLayout({
         <html lang="ru">
             <body className={inter.className}>
                 <Providers>
-                    <div className="grid grid-rows-[7.73rem_1fr_1fr]  md:grid-rows-[11.5rem_1fr_1fr] lg:grid-rows-[12rem_1fr_1fr]  2xl:grid-rows-[13.5rem_1fr_1fr]  ">
+                    <div className="grid grid-rows-[7.73rem_1fr_32rem]  md:grid-rows-[11.5rem_1fr_52rem] lg:grid-rows-[12rem_1fr_46rem]  2xl:grid-rows-[13.5rem_1fr_40.5rem]  ">
                         <AppHeader />
                         <main>{children}</main>
                         <AppFooter />

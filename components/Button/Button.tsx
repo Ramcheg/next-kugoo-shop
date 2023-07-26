@@ -21,7 +21,7 @@ export function Button({
             <button
                 type={typeButton}
                 className={cn(
-                    " transition-all duration-300 text-base 2xl:text-xl  border border-transparent relative",
+                    " transition-all duration-300 text-base 2xl:text-xl  border  border-transparent relative",
                     className,
                     {
                         [" text-white bg-lavander  hover:bg-lavander-light"]:
