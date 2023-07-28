@@ -14,5 +14,8 @@ export interface IButtonProps
     icon?: iconType;
     typeButton?: "button" | "submit" | "reset";
     onLavaner?: boolean;
-    borderOn?: boolean;
+    borderHoverOn?: "transparent" | "white";
+    withBorder?: boolean;
+    isHover?: boolean;
+    isDisabled?: boolean;
 }

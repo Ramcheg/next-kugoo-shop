@@ -7,8 +7,8 @@ import Link from "next/link";
 
 export function HomeAboutAs(): JSX.Element {
     return (
-        <div className="flex flex-col-reverse md:flex-row justify-between items-center">
-            <div className="relative rounded-md overflow-hidden">
+        <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-3">
+            <div className="relative rounded-md overflow-hidden w-3/4 md:w-auto">
                 <Image
                     src={companyImg}
                     alt="Happy Young Company"
@@ -16,7 +16,7 @@ export function HomeAboutAs(): JSX.Element {
                     height={565}
                     className="pointer-events-none"
                 />
-                <div className="absolute bottom-5 right-10 rounded-lg bg-white/10 backdrop-blur-sm">
+                <div className="absolute bottom-5  right-3 md:right-10 rounded-lg bg-white/10 backdrop-blur-sm">
                     <div className="ml-5 mr-10 mt-4 pb-4">
                         <div className="text-lg 2xl:text-xl font-medium text-white">
                             Тест-драйв в Киеве
@@ -30,12 +30,13 @@ export function HomeAboutAs(): JSX.Element {
                         className="relative w-full text-left after:content-['-->'] after:absolute after:right-5"
                         color="lavander"
                         size="small"
+                        borderHoverOn="transparent"
                     >
                         Подробнее
                     </Button>
                 </div>
             </div>
-            <div className="w-1/2">
+            <div className="w-full px-3 md:px-0 md:w-1/2">
                 <H level={2}>
                     Kugoo-Ukraine — первый официальный дилер Kugoo Kirin в
                     Украине

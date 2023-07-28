@@ -14,3 +14,4 @@ export * from "./DroneSection/DroneSection";
 export * from "./Catalog/Catalog";
 export * from "./ManagerPanel/ManagerPanel";
 export * from "./ModalWrapperCenter/ModalWrapperCenter";
+export * from "./OurAdvantages/OurAdvantages";

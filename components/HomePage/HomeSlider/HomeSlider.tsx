@@ -123,7 +123,8 @@ export function HomeSlider(): JSX.Element {
                                             className="my-7 hidden md:inline"
                                             color="white"
                                             size="middle"
-                                            borderOn
+                                            withBorder
+                                            borderHoverOn="white"
                                         >
                                             Перейти в каталог
                                         </Button>

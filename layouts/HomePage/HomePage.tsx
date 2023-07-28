@@ -1,4 +1,9 @@
-import { ContainerServices, DroneSection, ProductCard } from "@/components";
+import {
+    ContainerServices,
+    DroneSection,
+    OurAdvantages,
+    ProductCard,
+} from "@/components";
 import {
     HomeSlider,
     HomeCreditList,
@@ -38,6 +43,9 @@ export default function HomePage(): JSX.Element {
                     </section>
                 </div>
             </div>
+            <section className="container mx-auto my-10 md:my-24">
+                <OurAdvantages />
+            </section>
         </>
     );
 }

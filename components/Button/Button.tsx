@@ -11,27 +11,37 @@ export function Button({
     color,
     className,
     icon,
-    borderOn,
+    borderHoverOn,
     typeButton = "button",
     onLavaner,
+    withBorder,
+    isHover = true,
+    isDisabled = false,
     ...props
 }: IButtonProps): JSX.Element {
     return (
         <>
             <button
+                disabled={isDisabled}
                 type={typeButton}
                 className={cn(
-                    " transition-all duration-300 text-base 2xl:text-xl  border  border-transparent relative",
+                    ` transition-all duration-300 text-base 2xl:text-xl  border   relative`,
                     className,
                     {
-                        [" text-white bg-lavander  hover:bg-lavander-light"]:
-                            color === "lavander",
-                        ["text-gray-dark bg-gray-light  hover:bg-white hover:border hover:border-lavander hover:text-lavander"]:
-                            color === "gray",
-                        ["text-white bg-orange-editible  hover:bg-orange-light"]:
-                            color === "orange",
-                        ["text-lavander  bg-white border-lavander  hover:bg-lavander-light hover:text-white"]:
-                            color === "white",
+                        [" text-white bg-lavander "]: color === "lavander",
+                        ["text-gray-dark bg-gray-light  "]: color === "gray",
+                        ["text-white bg-orange-editible  "]: color === "orange",
+                        ["  bg-white border-lavander  "]: color === "white",
+
+                        [" hover:bg-lavander-light"]:
+                            color === "lavander" && isHover,
+
+                        [" hover:bg-white hover:border hover:border-lavander hover:text-lavander"]:
+                            color === "gray" && isHover,
+                        [" hover:bg-orange-light"]:
+                            color === "orange" && isHover,
+                        [" hover:text-white   hover:bg-lavander-light "]:
+                            color === "white" && isHover,
 
                         [" btn flex flex-row-reverse items-center "]:
                             icon === "menu",
@@ -51,8 +61,11 @@ export function Button({
                         ["text-sm 2xl:text-base px-[1.24rem] 2xl:px-[1.6rem] py-[0.61rem] 2xl:py-[0.8rem] rounded"]:
                             size === "small",
 
-                        ["hover:border hover:border-solid hover:border-white"]:
-                            borderOn,
+                        ["border-transparent hover:border hover:border-solid hover:border-white"]:
+                            borderHoverOn === "white",
+                        ["border-transparent"]: borderHoverOn === "transparent",
+
+                        ["border border-solid border-lavander"]: withBorder,
                     }
                 )}
                 {...props}
