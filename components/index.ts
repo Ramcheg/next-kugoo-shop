@@ -10,3 +10,7 @@ export * from "./Input/Input";
 export * from "./ContainerServices/ContainerServices";
 export * from "./PayForOneClick/PayForOneClick";
 export * from "./ModalProduct/ModalProduct";
+export * from "./DroneSection/DroneSection";
+export * from "./Catalog/Catalog";
+export * from "./ManagerPanel/ManagerPanel";
+export * from "./ModalWrapperCenter/ModalWrapperCenter";

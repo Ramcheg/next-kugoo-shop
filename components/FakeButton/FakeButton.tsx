@@ -12,7 +12,7 @@ export function FakeButton({
     return (
         <div
             className={cn(
-                "py-1 px-3 rounded-md text-xs 2xl:text-base font-medium",
+                "py-1 px-3 rounded-md text-xs 2xl:text-base font-medium inline-block",
                 className,
                 {
                     ["bg-white"]: bgColor === "white",

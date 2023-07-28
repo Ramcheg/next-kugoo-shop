@@ -1,23 +1,24 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
+
+import managerImg from "@/public/menengerWoman.png";
+import Link from "next/link";
 import { Button, H, Input, ModalWrapperCenter } from "..";
 
-export function ModalProduct({
+export function ManagerModalPanel({
     onOpenModal,
 }: {
     onOpenModal: () => void;
 }): JSX.Element {
     return (
         <ModalWrapperCenter>
-            <div className="flex flex-col lg:flex-row items-center gap-6 m-20 lg:m-12">
+            <div className="flex flex-col lg:flex-row items-center gap-6 m-20 lg:m-10">
                 <div className="w-[100%] lg:w-[60%] m-8">
-                    <H level={3}>
-                        Оформите предзаказ на электросамокат Kugoo Kirin M4
-                    </H>
+                    <H level={3}>Менеджер позвонит вам в течение 5 минут</H>
                     <div className="mt-2">
-                        Сообщим вам, когда товар появится в наличии
+                        ответит на все вопросы и проконсультирует по продуктам
+                        Kugoo
                     </div>
                     <form action="forEmail" className="mt-6">
                         <Input
@@ -27,12 +28,12 @@ export function ModalProduct({
                             className="w-full lg:w-2/3"
                         />
                         <Button
-                            color="orange"
+                            color="lavander"
                             size="middle"
                             typeButton="submit"
                             className="mt-4"
                         >
-                            Оформить предзаказ
+                            Позвоните мне
                         </Button>
                         <label className="flex items-center mt-4 gap-3">
                             <Input inputType="checkbox" nameInput="policy" />
@@ -51,10 +52,10 @@ export function ModalProduct({
                 </div>
                 <div className="hidden lg:block">
                     <Image
-                        src="https://firebasestorage.googleapis.com/v0/b/kugoo-shop.appspot.com/o/ElectroSamokat%2FImage%2F347658975-i.webp?alt=media&token=69d817de-d4da-433f-ba37-878cf2a4fdbf"
-                        alt="skuter"
-                        width={450}
-                        height={630}
+                        src={managerImg}
+                        alt="manager"
+                        width={406}
+                        height={428}
                     />
                 </div>
                 <div
