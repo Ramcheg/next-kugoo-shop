@@ -26,7 +26,7 @@ export function OurAdvantages(): JSX.Element {
             ({ descrtiption, icon, name }, i): JSX.Element => {
                 return (
                     <div
-                        className="px-5  py-6 border border-solid border-gray-editible rounded-md  w-1/2 sm:w-auto mx-auto"
+                        className="px-5  py-6 border border-solid border-gray-editible rounded-md  w-3/4 md:w-full mx-auto  sm:w-auto "
                         key={i}
                     >
                         {icon}

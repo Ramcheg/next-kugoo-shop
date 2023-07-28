@@ -1,4 +1,5 @@
 import {
+    BigVideo,
     ContainerServices,
     DroneSection,
     OurAdvantages,
@@ -46,6 +47,14 @@ export default function HomePage(): JSX.Element {
             <section className="container mx-auto my-10 md:my-24">
                 <OurAdvantages />
             </section>
+            <div className="containerBig rounded-lg overflow-hidden h-[320px] md:h-[630px] mt-10 md:mt-24">
+                <BigVideo />
+            </div>
+            <div className="containerBig mt-8 md:mt-20">
+                <section>
+                    <h1>Blog</h1>
+                </section>
+            </div>
         </>
     );
 }

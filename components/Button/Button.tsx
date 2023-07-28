@@ -25,7 +25,7 @@ export function Button({
                 disabled={isDisabled}
                 type={typeButton}
                 className={cn(
-                    ` transition-all duration-300 text-base 2xl:text-xl  border   relative`,
+                    "transition-all duration-300 text-base 2xl:text-xl  border   relative cursor-pointer",
                     className,
                     {
                         [" text-white bg-lavander "]: color === "lavander",
