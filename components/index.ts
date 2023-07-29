@@ -16,3 +16,6 @@ export * from "./ManagerPanel/ManagerPanel";
 export * from "./ModalWrapperCenter/ModalWrapperCenter";
 export * from "./OurAdvantages/OurAdvantages";
 export * from "./BigVIdeo/BigVideo";
+export * from "./Blog/Blog";
+export * from "./ArrowBtnCircle/ArrowBtnCircle";
+export * from "./QuestionsAndAnswer/QuestionsAndAnswer";

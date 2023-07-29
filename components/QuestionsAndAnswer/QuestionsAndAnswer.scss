@@ -1,0 +1,43 @@
+.QaA_after {
+    position: relative;
+
+    &::after,
+    &::before {
+        content: '';
+        position: absolute;
+        background: #000;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        transition: all ease-in-out 0.5s;
+    }
+
+    &::after {
+        right: 1px;
+        width: 20px;
+        height: 2px;
+
+    }
+
+    &::before {
+        right: 10px;
+        width: 2px;
+        height: 20px;
+
+    }
+
+    &-active {
+
+        &::before {
+            top: -1px;
+            transform: rotate(222deg);
+
+        }
+
+        &::after {
+            transform: rotate(46deg);
+
+        }
+    }
+
+}

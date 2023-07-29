@@ -10,7 +10,7 @@ export function H({
     ...props
 }: IH): JSX.Element {
     const clazzFor1and2 = cn(
-        "text-base lg:text-4xl 2xl:text-5xl font-semibold uppercase",
+        "text-base lg:text-4xl/[4rem] 2xl:text-5xl/[4rem] font-semibold uppercase",
         className,
         {
             ["text-black"]: color === "black",
@@ -51,11 +51,15 @@ export function H({
         case 4:
             return (
                 <h4
-                    className={cn("text-xl font-semibold", className, {
-                        ["text-black"]: color === "black",
-                        ["text-white"]: color === "white",
-                        ["uppercase"]: transform === "uppercase",
-                    })}
+                    className={cn(
+                        "text-lg/6 md:text-xl/6 font-semibold",
+                        className,
+                        {
+                            ["text-black"]: color === "black",
+                            ["text-white"]: color === "white",
+                            ["uppercase"]: transform === "uppercase",
+                        }
+                    )}
                     {...props}
                 >
                     {children}

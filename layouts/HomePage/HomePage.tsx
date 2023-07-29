@@ -1,9 +1,11 @@
 import {
     BigVideo,
+    Blog,
     ContainerServices,
     DroneSection,
     OurAdvantages,
     ProductCard,
+    QuestionsAndAnswer,
 } from "@/components";
 import {
     HomeSlider,
@@ -44,7 +46,7 @@ export default function HomePage(): JSX.Element {
                     </section>
                 </div>
             </div>
-            <section className="container mx-auto my-10 md:my-24">
+            <section className="container mx-auto my-5 md:my-16">
                 <OurAdvantages />
             </section>
             <div className="containerBig rounded-lg overflow-hidden h-[320px] md:h-[630px] mt-10 md:mt-24">
@@ -52,9 +54,15 @@ export default function HomePage(): JSX.Element {
             </div>
             <div className="containerBig mt-8 md:mt-20">
                 <section>
-                    <h1>Blog</h1>
+                    <Blog />
                 </section>
             </div>
+            <div className="mt-10 md:mt-28">
+                <section>
+                    <QuestionsAndAnswer />
+                </section>
+            </div>
+            <div className=" mt-6 md:mt-12"></div>
         </>
     );
 }
