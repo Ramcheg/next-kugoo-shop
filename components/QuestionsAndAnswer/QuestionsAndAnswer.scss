@@ -29,7 +29,7 @@
     &-active {
 
         &::before {
-            top: -1px;
+            top: 5px;
             transform: rotate(222deg);
 
         }
@@ -40,4 +40,14 @@
         }
     }
 
+}
+
+.QaA-active {
+    opacity: 1;
+    display: block
+}
+
+.QaA-hidden {
+    opacity: 0;
+    display: none
 }

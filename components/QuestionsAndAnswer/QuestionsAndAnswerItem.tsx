@@ -1,56 +1,53 @@
 "use client";
 
-import { MouseEventHandler } from "react";
+import {
+    DetailedHTMLProps,
+    ForwardedRef,
+    HTMLAttributes,
+    forwardRef,
+} from "react";
 import "./QuestionsAndAnswer.scss";
-import classNames from "classnames";
+import { IQaAArray } from "./QuestionsAndAnswer";
 
-export function QuestionsAndAnswerItem({
-    onClick,
-    isOpen,
-}: {
-    onClick: MouseEventHandler<HTMLDivElement>;
+interface IQaAProps
+    extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
+        IQaAArray {
     isOpen: boolean;
-}): JSX.Element {
-    return (
-        <div onClick={onClick}>
-            <div className="my-7">
-                <div
-                    className={classNames(
-                        `QaA_after ${
-                            isOpen ? "QaA_after-active" : ""
-                        } cursor-pointer text-base 2xl:text-lg font-medium`
-                    )}
-                >
-                    Есть ли гарантия того, что придет именно то, что было
-                    заказано? А если я оплачу и товар не придет?
-                </div>
-                <div
-                    className={classNames(
-                        `w-3/4 mx-auto  text-sm/5 2xl:text-base/5  transition-all delay-100 ${
-                            isOpen ? "" : "opacity-0 hidden"
-                        }`
-                    )}
-                >
-                    При покупке электросамоката у нас, вам выдается кассовый
-                    чек, товарный чек и гарантийный талон – эти документы дают
-                    право на гарантийное обслуживание на законодательном уровне.
-                    Наши сервисные центры находятся в Москве, Санкт-Петербурге и
-                    Краснодаре. В случае поломки вы можете обратиться туда. Если
-                    вы живете в городе, где нет нашего сервисного центра, то наш
-                    специалист поможет решить вопрос удаленно. Он сможет понять
-                    какая запчасть вышла из строя и отправит ее вам, если вы
-                    сможете сами заменить ее. Если удаленно решить вопрос не
-                    удастся, специалист создаст трек номер и попросит вас
-                    отправить самокат транспортной компанией CDEK.
-                    Транспортировку Товара (с ремонта/на ремонт) Покупатель
-                    оплачивает самостоятельно или осуществляет доставку Товара
-                    до СЦ своими силами и за свой счет. В соответствии со ст. 20
-                    ФЗ «О защите прав потребителей» на ремонт по гарантии дается
-                    не более 45 дней. В городах, где есть наш сервисный центр
-                    ремонт проводится за 3-7 дней.
-                </div>
-            </div>
-            <hr />
-        </div>
-    );
+    onOpenDescription: () => void;
 }
+
+export const QuestionsAndAnswerItem = forwardRef(
+    function QuestionsAndAnswerItem(
+        {
+            isOpen,
+            onOpenDescription,
+            descrtiption,
+            titleHead,
+            ...props
+        }: IQaAProps,
+        ref: ForwardedRef<HTMLDivElement>
+    ): JSX.Element {
+        return (
+            <div {...props}>
+                <div className="my-7" ref={ref}>
+                    <div
+                        className="flex justify-between gap-6"
+                        onClick={onOpenDescription}
+                    >
+                        <div className="cursor-pointer text-base 2xl:text-lg font-medium">
+                            {titleHead}
+                        </div>
+
+                        <div className={"QaA_after"}></div>
+                    </div>
+                    <div
+                        className={`w-[90%] mt-4  text-left text-sm/5 2xl:text-base/5  transition-all delay-100 QaA-hidden`}
+                    >
+                        {descrtiption}
+                    </div>
+                </div>
+                <hr />
+            </div>
+        );
+    }
+);

@@ -14,6 +14,7 @@ import {
     HomePopularCategories,
     HomeAboutAs,
 } from "@/components/HomePage";
+import { QaAHome } from "@/components/QuestionsAndAnswer/QuestionsAndAnswerArr";
 
 export default function HomePage(): JSX.Element {
     return (
@@ -50,7 +51,7 @@ export default function HomePage(): JSX.Element {
                 <OurAdvantages />
             </section>
             <div className="containerBig rounded-lg overflow-hidden h-[320px] md:h-[630px] mt-10 md:mt-24">
-                <BigVideo />
+                {/* <BigVideo /> */}
             </div>
             <div className="containerBig mt-8 md:mt-20">
                 <section>
@@ -59,7 +60,7 @@ export default function HomePage(): JSX.Element {
             </div>
             <div className="mt-10 md:mt-28">
                 <section>
-                    <QuestionsAndAnswer />
+                    <QuestionsAndAnswer arrayQaA={QaAHome} />
                 </section>
             </div>
             <div className=" mt-6 md:mt-12"></div>
