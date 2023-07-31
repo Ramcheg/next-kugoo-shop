@@ -1,4 +1,5 @@
 import {
+    AdditionallyProduct,
     BigVideo,
     Blog,
     ContainerServices,
@@ -63,7 +64,9 @@ export default function HomePage(): JSX.Element {
                     <QuestionsAndAnswer arrayQaA={QaAHome} />
                 </section>
             </div>
-            <div className=" mt-6 md:mt-12"></div>
+            <div className="container mx-auto mt-6 md:mt-12 md:block hidden">
+                <AdditionallyProduct />
+            </div>
         </>
     );
 }

@@ -15,7 +15,7 @@ import { FooterChat } from "@/components/Footer/FooterChat/FooterChat";
 
 export default function AppFooter(): JSX.Element {
     return (
-        <footer className="bg-gray-editible relative pb-16 sm:pb-0">
+        <footer className="bg-gray-editible relative pb-16 sm:pb-0 mt-4 md:mt-14">
             <div className="bg-lavander">
                 <div className="container mx-auto py-3 lg:py-[1.44rem] px-4 lg:px-0 flex gap-5 lg:gap-24 lg:items-center items-stretch justify-between flex-col lg:flex-row">
                     <H

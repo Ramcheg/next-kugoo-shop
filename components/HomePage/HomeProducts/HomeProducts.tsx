@@ -15,7 +15,7 @@ export function HomeProducts(): JSX.Element {
                     <HomeProductsSort />
                 </div>
             </div>
-            <div className="grid justify-center md:justify-between gap-y-10 gap-x-7 grid-cols-[repeat(auto-fit,minmax(0,_150px))] md:grid-cols-[repeat(auto-fit,minmax(0,_225px))] 2xl:grid-cols-[repeat(auto-fit,minmax(0,_300px))] grid-rows-2 mt-12">
+            <div className="grid justify-center  gap-y-10 gap-x-7 grid-cols-[repeat(auto-fit,minmax(0,_150px))] md:grid-cols-[repeat(auto-fit,minmax(0,_225px))] 2xl:grid-cols-[repeat(auto-fit,minmax(0,_300px))] grid-rows-2 mt-12">
                 <ProductCard />
                 <ProductCard />
                 <ProductCard />

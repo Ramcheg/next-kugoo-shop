@@ -7,23 +7,29 @@ import SpeedometerSvg from "@/public/card/speedometer.svg";
 import PowerSvg from "@/public/card/power.svg";
 import TimerSvg from "@/public/card/timer.svg";
 import { FakeButton } from "../FakeButton/FakeButton";
+import Link from "next/link";
 
 export function ProductCard(): JSX.Element {
     return (
-        <div className="relative transition-all delay-100 overflow-hidden border border-solid rounded-t-xl border-gray-editible ">
+        <div className="relative transition-all delay-100 overflow-hidden border border-solid rounded-xl border-gray-editible ">
             <div className="">
                 <Image
                     src="https://firebasestorage.googleapis.com/v0/b/kugoo-shop.appspot.com/o/ElectroSamokat%2FFront%2Fkuter.jpg?alt=media&token=f5f83638-2d16-4962-a544-c9d57cde6538"
                     alt="skuter"
                     width={221}
                     height={284}
-                    className=" 2xl:w-[296px]  mx-auto mt-[1px]  rounded-t-xl"
+                    className="md:w-full 2xl:w-[100%]  mx-auto mt-[1px]  rounded-t-xl"
                 />
             </div>
             <div className="flex flex-col items-center mt-3 mx-1 md:mx-4 ">
-                <H className="text-center md:text-left" level={4}>
-                    Kugoo Kirin M4
-                </H>
+                <Link href="#">
+                    <H
+                        className="text-center md:text-left hover:text-lavander"
+                        level={4}
+                    >
+                        Kugoo Kirin M4
+                    </H>
+                </Link>
                 <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-x-2 md:gap-x-6 gap-y-1 md:gap-y-4 my-5">
                     <div className="flex gap-2 items-center">
                         <BattarySvg />

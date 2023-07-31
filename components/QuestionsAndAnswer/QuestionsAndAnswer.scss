@@ -1,3 +1,16 @@
+.animQ {
+    &:hover {
+        .QaA_after {
+
+            &::after,
+            &::before {
+                background: #6F73EE;
+            }
+        }
+    }
+}
+
+
 .QaA_after {
     position: relative;
 
@@ -9,7 +22,7 @@
         top: 50%;
         transform: translateY(-50%);
         cursor: pointer;
-        transition: all ease-in-out 0.5s;
+        transition: all ease-in-out 0.4s;
     }
 
     &::after {
@@ -31,11 +44,13 @@
         &::before {
             top: 5px;
             transform: rotate(222deg);
+            background-color: #6F73EE;
 
         }
 
         &::after {
             transform: rotate(46deg);
+            background-color: #6F73EE;
 
         }
     }
@@ -50,4 +65,8 @@
 .QaA-hidden {
     opacity: 0;
     display: none
+}
+
+.QaA_title {
+    color: #6F73EE;
 }

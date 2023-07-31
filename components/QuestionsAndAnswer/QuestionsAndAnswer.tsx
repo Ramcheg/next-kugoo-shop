@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { H } from "../H/H";
 import { QuestionsAndAnswerItem } from "./QuestionsAndAnswerItem";
 
@@ -14,25 +14,20 @@ export function QuestionsAndAnswer({
 }: {
     arrayQaA: IQaAArray[];
 }): JSX.Element {
-    const [openDescr, setOpenDescr] = useState<boolean>(false);
     const desctRef = useRef<(HTMLDivElement | null)[]>([]);
     const [QaA, setQaA] = useState<IQaAArray[]>(arrayQaA);
-
-    useEffect(() => {
-        console.log("render");
-        if (desctRef.current.length > 0) {
-            console.log(desctRef.current);
-        }
-    }, [desctRef.current.length]);
 
     const onOpenDescription = (count: number) => {
         const currentItemText = desctRef.current[count]?.children[1];
         const currentItemPlus =
             desctRef.current[count]?.children[0].children[1];
-        if (currentItemText && currentItemPlus) {
+        const currentItemTitle =
+            desctRef.current[count]?.children[0].children[0];
+        if (currentItemText && currentItemPlus && currentItemTitle) {
             currentItemText.classList.toggle("QaA-hidden");
             currentItemText.classList.toggle("QaA-active");
             currentItemPlus.classList.toggle("QaA_after-active");
+            currentItemTitle.classList.toggle("QaA_title");
         }
     };
 
@@ -45,7 +40,6 @@ export function QuestionsAndAnswer({
                         <QuestionsAndAnswerItem
                             {...item}
                             key={`${i}-item`}
-                            isOpen={openDescr}
                             onOpenDescription={() => onOpenDescription(i)}
                             ref={(curentItem) =>
                                 (desctRef.current[i] = curentItem)
@@ -56,14 +50,4 @@ export function QuestionsAndAnswer({
             </div>
         </div>
     );
-}
-
-{
-    /* <QuestionsAndAnswerItem
-key={`${i}-item`}
-isOpen={openDescr}
-onOpenDescription={() => onOpenDescription(i)}
-ref={(curentItem) =>
-    (desctRef.current[i] = curentItem)
-} */
 }
