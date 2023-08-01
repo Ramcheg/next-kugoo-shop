@@ -136,3 +136,8 @@ table {
         max-width: 100vw;
     }
 }
+
+:root {
+    --lavander: #6f73ee;
+    --gray: #5d6c7b;
+}

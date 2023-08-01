@@ -2,14 +2,10 @@
 
 import { useState } from "react";
 import { ManagerModalPanel } from "./ManagerModalPanel";
+import useOpenModal from "@/hooks/useOpenModal";
 
 export function ManagerPanel(): JSX.Element {
-    const [openModal, setOpenModal] = useState<boolean>(false);
-
-    const onOpenModal = () => {
-        setOpenModal((modal) => !modal);
-    };
-
+    const { onOpenModal, openModal } = useOpenModal();
     return (
         <div className="w-[11rem] 2xl:w-[13rem]">
             <div className="text-xs 2xl:text-sm ">
@@ -21,7 +17,10 @@ export function ManagerPanel(): JSX.Element {
             >
                 Задать вопрос
             </div>
-            {openModal ? <ManagerModalPanel onOpenModal={onOpenModal} /> : null}
+            <ManagerModalPanel
+                onOpenModal={onOpenModal}
+                openModal={openModal}
+            />
         </div>
     );
 }

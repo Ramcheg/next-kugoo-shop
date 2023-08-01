@@ -3,6 +3,13 @@
         transition: all 1s;
         opacity: 0;
         width: 0;
+        min-height: 15rem;
+        visibility: hidden;
+
+        .is {
+            display: none;
+        }
+
     }
 
     &:hover {
@@ -10,8 +17,26 @@
             transition: all .5s;
             width: 35rem;
             opacity: 1;
+            padding: 2rem 2.60rem 2rem 2.60rem;
+            visibility: visible;
 
         }
+
+        .is {
+            display: flex;
+        }
+
     }
 
+}
+
+.electroScooter {
+    &:hover {
+        g {
+            path {
+                transition: all 100ms;
+                fill: var(--lavander);
+            }
+        }
+    }
 }

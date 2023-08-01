@@ -8,11 +8,13 @@ import { Button, H, Input, ModalWrapperCenter } from "..";
 
 export function ManagerModalPanel({
     onOpenModal,
+    openModal,
 }: {
     onOpenModal: () => void;
+    openModal: boolean;
 }): JSX.Element {
     return (
-        <ModalWrapperCenter>
+        <ModalWrapperCenter openModal={openModal}>
             <div className="flex flex-col lg:flex-row items-center gap-6 m-20 lg:m-10">
                 <div className="w-[100%] lg:w-[60%] m-8">
                     <H level={3}>Менеджер позвонит вам в течение 5 минут</H>
@@ -25,7 +27,7 @@ export function ManagerModalPanel({
                             inputType="tel"
                             placeholderInput="+380 (__) __ - __ - ___"
                             nameInput="phone"
-                            className="w-full lg:w-2/3"
+                            className="w-full  2xl:w-2/3"
                         />
                         <Button
                             color="lavander"

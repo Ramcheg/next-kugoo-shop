@@ -9,8 +9,10 @@ import {
     HeaderMenu,
     HeaderModalMenu,
 } from "@/components/Header";
+import { HeaderOpenMenuBtn } from "@/components/Header/HeaderOpenMenuBtn/HeaderOpenMenuBtn";
 
 import LogoIcon from "@/public/Logo.svg";
+import Link from "next/link";
 
 export default function AppHeader(): JSX.Element {
     return (
@@ -26,17 +28,10 @@ export default function AppHeader(): JSX.Element {
                 <hr className="border-[#ECF3FF]" />
                 <div className="container mx-auto mt-[1.69rem] mb-[2.12rem] ">
                     <div className="flex relative items-center justify-between gap-[1.5rem]">
-                        <a href="#" target="_blank">
+                        <Link href="/" target="_blank">
                             <LogoIcon className="w-[80px] lg:w-[7.25rem] 2xl:w-[9.4rem] h-[2.6rem] 2xl:h-[3.38rem]" />
-                        </a>
-                        <Button
-                            className="gap-3"
-                            color="lavander"
-                            size="menu"
-                            icon="menu"
-                        >
-                            Каталог
-                        </Button>
+                        </Link>
+                        <HeaderOpenMenuBtn />
                         <HeaderSearch />
                         <div className="flex gap-[0.5rem] items-center relative">
                             <ButtonIcon icon="compare" colorIcon="black" />
@@ -50,7 +45,6 @@ export default function AppHeader(): JSX.Element {
                             </ButtonIcon>
                             {/* <HeaderBasketModal /> */}
                         </div>
-                        {/* <HeaderModalMenu /> */}
                     </div>
                 </div>
                 <div className=" bg-gray-light">

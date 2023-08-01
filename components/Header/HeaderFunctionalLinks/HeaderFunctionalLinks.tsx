@@ -1,6 +1,7 @@
 import { ISocialIconGroupProps } from "./HeaderFunctionalLinksProps";
 import Link from "next/link";
 import cn from "classnames";
+import { CallUsBtn } from "@/components/CallUsBtn/CallUsBtn";
 
 export function HeaderFunctionalLinks({
     className,
@@ -16,22 +17,17 @@ export function HeaderFunctionalLinks({
         >
             <Link
                 className="transition-colors delay-100 hover:text-lavander"
-                href="#"
+                href="/service"
             >
                 Сервис
             </Link>
             <Link
                 className="transition-colors delay-100 hover:text-lavander"
-                href="#"
+                href="/cooperation"
             >
                 Сотрудничество
             </Link>
-            <Link
-                className="transition-colors delay-100 hover:text-lavander"
-                href="#"
-            >
-                Заказать звонок
-            </Link>
+            <CallUsBtn />
         </nav>
     );
 }
