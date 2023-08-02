@@ -16,7 +16,7 @@ export function HeaderOpenMenuBtn(): JSX.Element {
     return (
         <>
             <Button
-                className="gap-3"
+                className={`gap-3 ${openModal ? "btn-active" : ""}`}
                 color="lavander"
                 size="menu"
                 icon="menu"

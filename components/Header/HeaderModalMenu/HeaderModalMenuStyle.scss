@@ -13,6 +13,19 @@
     }
 
     &:hover {
+
+        h3 {
+            color: var(--lavander);
+
+            svg {
+                g {
+                    path {
+                        fill: var(--lavander);
+                    }
+                }
+            }
+        }
+
         .do {
             transition: all .5s;
             width: 35rem;
@@ -30,7 +43,7 @@
 
 }
 
-.electroScooter {
+.hoverLavanderTitle {
     &:hover {
         g {
             path {
