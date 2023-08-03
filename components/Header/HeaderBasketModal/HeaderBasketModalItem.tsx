@@ -1,15 +1,20 @@
+"use client";
+
 import formatCurrency from "@/helpers/formatCurrency";
-import { IBasketGoods } from "./HeaderBasketModalProps";
+import { IBasketGoodsItem } from "./HeaderBasketModalProps";
 import Image from "next/image";
 import Delete from "@/public/Delete.svg";
+import { motion } from "framer-motion";
 export function HeaderBasketModalItem({
     name,
     price,
     thumbnail,
     count,
-}: IBasketGoods): JSX.Element {
+    deletedProduct,
+    id,
+}: IBasketGoodsItem): JSX.Element {
     return (
-        <div>
+        <motion.div layout>
             <div className="flex justify-between items-center mx-5">
                 <div className="flex gap-3 my-5  ">
                     <Image
@@ -31,12 +36,15 @@ export function HeaderBasketModalItem({
                     </div>
                 </div>
                 <div>
-                    <div className="cursor-pointer hover:bg-gray-light rounded-full inline-block p-1">
+                    <div
+                        className="cursor-pointer hover:bg-gray-light rounded-full inline-block p-1"
+                        onClick={() => deletedProduct(id)}
+                    >
                         <Delete />
                     </div>
                 </div>
             </div>
             <hr />
-        </div>
+        </motion.div>
     );
 }

@@ -4,36 +4,43 @@ import { Button } from "@/components";
 import SearchIcon from "@/public/Search.svg";
 
 import "./HeaderSearchStyle.scss";
-import { useEffect, useState } from "react";
+import { useState, KeyboardEvent } from "react";
 import { collection, doc, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/firebase/firebase";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface ISearch {
     isMobSearch?: boolean;
 }
 
 export function HeaderSearch({ isMobSearch }: ISearch): JSX.Element {
-    const [search, setSearch] = useState<string>("KUGOO");
+    const [search, setSearch] = useState<string>("descript");
     const [request, setRequest] = useState();
-    requestion();
-    useEffect(() => {}, [search]);
+    const router = useRouter();
 
-    async function requestion() {
-        const q = query(
-            collection(db, "Products"),
-            where("name", ">=", search)
-        );
+    // async function requestion() {
+    //     const q = query(
+    //         collection(db, "Products"),
+    //         where("name", ">=", search)
+    //     );
 
-        try {
-            const data = await getDocs(q);
-            // console.log(data);
-            data.forEach((document) => {
-                console.log(document.data());
-            });
-        } catch (e) {
-            console.log(e);
+    //     try {
+    //         const data = await getDocs(q);
+    //         console.log(data);
+    //         data.forEach((document) => {
+    //             console.log(document.data());
+    //         });
+    //     } catch (e) {
+    //         console.log(e);
+    //     }
+    // }
+
+    const onHandleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === "Enter") {
+            router.push(`/catalog/search?name=${search}`);
         }
-    }
+    };
 
     if (isMobSearch) {
         return (
@@ -44,6 +51,7 @@ export function HeaderSearch({ isMobSearch }: ISearch): JSX.Element {
                     placeholder="Искать самокат KUGO"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
+                    onKeyDown={(e) => onHandleKeyPress(e)}
                 />
                 <SearchIcon className="absolute right-3 top-1/2 -translate-y-1/2 w-3 h-3 icon-black" />
             </div>
@@ -58,10 +66,13 @@ export function HeaderSearch({ isMobSearch }: ISearch): JSX.Element {
                 placeholder="Искать самокат KUGO"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                onKeyDown={(e) => onHandleKeyPress(e)}
             />
             <div className="absolute right-[-1px]  top-[50%] translate-y-[-50%]">
                 <Button color="lavander" size="icon">
-                    <SearchIcon className="w-4 h-4 2xl:w-5 2xl:h-5" />
+                    <Link href={`/catalog/search?name=${search}`}>
+                        <SearchIcon className="w-[1.1rem] h-[1.1rem] 2xl:w-5 2xl:h-5" />
+                    </Link>
                 </Button>
             </div>
         </div>

@@ -5,3 +5,4 @@ export * from "./MobHeader/MobHeader";
 export * from "./HeaderBasketModal/HeaderBasketModal";
 export * from "./HeaderMenu/HeaderMenu";
 export * from "./HeaderModalMenu/HeaderModalMenu";
+export * from "./HeaderBuscketBtn/HeaderBuscketBtn";

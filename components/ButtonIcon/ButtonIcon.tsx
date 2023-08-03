@@ -6,6 +6,7 @@ import "./ButtonIconStyle.scss";
 import HeartIcon from "@/public/Heart.svg";
 import ShoppingIcon from "@/public/Shopping.svg";
 import CompareIcon from "@/public/Compare.svg";
+import { Fragment } from "react";
 
 const clazzIcon = "w-[1.25rem] h-[1.25rem]  2xl:w-[1.62rem] 2xl:h-[1.62rem]";
 const IconArr: IIconArr[] = [
@@ -27,7 +28,7 @@ export function ButtonIcon({
 }: IButtonIcon): JSX.Element {
     const Icon = IconArr.map((item) => {
         if (item.name === icon) {
-            return item.element;
+            return <Fragment key={item.name}>{item.element}</Fragment>;
         }
     });
     return (
@@ -47,13 +48,12 @@ export function ButtonIcon({
                     ["special-hover"]: icon === "compare" && animateHover,
                     [" flex items-center gap-[0.62rem] text-[0.875rem] 2xl:text-base font-bold"]:
                         children,
+                    [`${icon}-hover`]: animateHover,
                 }
             )}
             {...props}
         >
-            <div className={cn({ [`${icon}-hover`]: animateHover })}>
-                {Icon ? Icon : ""}
-            </div>
+            <div>{Icon ? Icon : ""}</div>
             {children ? children : ""}
         </button>
     );

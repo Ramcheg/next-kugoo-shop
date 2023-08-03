@@ -1,4 +1,4 @@
-import { SocialIconGroup, ButtonIcon, Button } from "@/components";
+import { SocialIconGroup, ButtonIcon } from "@/components";
 
 import {
     HeaderFunctionalLinks,
@@ -7,7 +7,7 @@ import {
     MobHeader,
     HeaderBasketModal,
     HeaderMenu,
-    HeaderModalMenu,
+    HeaderBuscketBtn,
 } from "@/components/Header";
 import { HeaderOpenMenuBtn } from "@/components/Header/HeaderOpenMenuBtn/HeaderOpenMenuBtn";
 
@@ -28,22 +28,23 @@ export default function AppHeader(): JSX.Element {
                 <hr className="border-[#ECF3FF]" />
                 <div className="container mx-auto mt-[1.69rem] mb-[2.12rem] ">
                     <div className="flex relative items-center justify-between gap-[1.5rem]">
-                        <Link href="/" target="_blank">
+                        <Link href="/">
                             <LogoIcon className="w-[80px] lg:w-[7.25rem] 2xl:w-[9.4rem] h-[2.6rem] 2xl:h-[3.38rem]" />
                         </Link>
                         <HeaderOpenMenuBtn />
                         <HeaderSearch />
                         <div className="flex gap-[0.5rem] items-center relative">
-                            <ButtonIcon icon="compare" colorIcon="black" />
-                            <ButtonIcon icon="heart" colorIcon="black" />
-                            <ButtonIcon
-                                icon="shopping"
-                                iconFill
-                                colorIcon="lavander"
-                            >
-                                Корзина
-                            </ButtonIcon>
-                            {/* <HeaderBasketModal /> */}
+                            <Link href={"/compare"}>
+                                <ButtonIcon icon="compare" colorIcon="black" />
+                            </Link>
+                            <Link href={"/favorites"}>
+                                <ButtonIcon
+                                    icon="heart"
+                                    iconFill={false}
+                                    colorIcon="black"
+                                />
+                            </Link>
+                            <HeaderBuscketBtn />
                         </div>
                     </div>
                 </div>

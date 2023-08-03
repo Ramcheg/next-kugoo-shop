@@ -31,19 +31,6 @@
     }
 }
 
-.heart-fill,
-.heart-hover:hover {
-    svg {
-        transition: all .5s;
-        fill: #6F73EE;
-
-        path {
-            transition: all .5s;
-            fill: #6F73EE;
-        }
-    }
-}
-
 .heart-black {
     svg {
         path {
@@ -54,6 +41,24 @@
     }
 }
 
+.heart-fill,
+.heart-hover:hover {
+    svg {
+        transition: all .5s;
+        fill: #6F73EE;
+
+        path {
+            transition: all .5s;
+            fill: #6F73EE;
+
+            &:nth-last-of-type(1) {
+                stroke: #6F73EE;
+            }
+        }
+    }
+}
+
+
 .special-hover:hover {
     svg {
         g {
@@ -62,21 +67,3 @@
         }
     }
 }
-
-
-
-
-
-
-// .heart-fill {
-//     svg {
-//         g {
-//             path {
-//                 &:nth-of-type(1) {
-//                     fill: red;
-//                 }
-
-//             }
-//         }
-//     }
-// }
