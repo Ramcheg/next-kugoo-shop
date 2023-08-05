@@ -1,5 +1,9 @@
+"use client";
 import { IHeaderMenuLinks } from "./HeaderMenuProps";
 import "./HeaderMenu.scss";
+import { usePathname, useSelectedLayoutSegment } from "next/navigation";
+import { useEffect, useState } from "react";
+import classNames from "classnames";
 
 const linkArr: IHeaderMenuLinks[] = [
     { id: "aboutShop", name: "О магазине" },
@@ -15,9 +19,15 @@ const linkArr: IHeaderMenuLinks[] = [
 ];
 
 export function HeaderMenu(): JSX.Element {
+    const path = useSelectedLayoutSegment();
+
     const renderItems = linkArr.map((link) => {
-        const clazzLink: string =
-            "transition-all delay-100 text-sm lg:text-base 2xl:text-lg font-bold font-medium hover:text-lavander-light  p-[.5rem] md:p-[0rem] md:m-[0rem]";
+        const clazzLink: string = classNames(
+            "transition-all delay-100 text-sm lg:text-base 2xl:text-lg font-bold font-medium hover:text-lavander-light  p-[.5rem] md:p-[0rem] md:m-[0rem]",
+            {
+                ["text-lavander"]: path === link.id,
+            }
+        );
         if ("additionalContent" in link) {
             return (
                 <li key={link.id}>
