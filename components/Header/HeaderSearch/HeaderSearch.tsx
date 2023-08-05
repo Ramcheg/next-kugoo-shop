@@ -15,7 +15,7 @@ interface ISearch {
 }
 
 export function HeaderSearch({ isMobSearch }: ISearch): JSX.Element {
-    const [search, setSearch] = useState<string>("descript");
+    const [search, setSearch] = useState<string>("");
     const [request, setRequest] = useState();
     const router = useRouter();
 

@@ -8,6 +8,7 @@ import { HeaderBasketModalItem } from "./HeaderBasketModalItem";
 import { useRef, useEffect, useState, Suspense } from "react";
 import cookies from "js-cookie";
 import cn from "classnames";
+import Link from "next/link";
 
 const basketArr: IBasketGoods[] = [
     {
@@ -118,15 +119,17 @@ export function HeaderBasketModal(): JSX.Element {
                             {formatCurrency(allPrice)}
                         </p>
                     </div>
-                    <Button
-                        className="mx-auto"
-                        color="lavander"
-                        size="dropDown"
-                        isDisabled={product.length == 0}
-                        isHover={product.length !== 0}
-                    >
-                        Перейти к корзине
-                    </Button>
+                    <Link href="/basket">
+                        <Button
+                            className="mx-auto"
+                            color="lavander"
+                            size="dropDown"
+                            isDisabled={product.length == 0}
+                            isHover={product.length !== 0}
+                        >
+                            Перейти к корзине
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </div>

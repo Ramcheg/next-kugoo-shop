@@ -6,24 +6,32 @@ import cookie from "js-cookie";
 import { Suspense, useEffect, useState } from "react";
 import { IBasketGoods } from "../HeaderBasketModal/HeaderBasketModalProps";
 import { Variants, motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export function HeaderBuscketBtn(): JSX.Element {
     const [isCokie, setIsCokie] = useState<boolean>(false);
     const [openBusket, setOpenBusket] = useState<boolean>(false);
+    const path = usePathname();
+
+    useEffect(() => {
+        setOpenBusket(false);
+    }, [path]);
 
     useEffect(() => {
         setIsCokie(isCookieBusket());
+        return () => {
+            setOpenBusket(false);
+        };
     }, []);
     const isCookieBusket = () => {
         const cok = cookie.get("busket");
         const decode = decodeURI(cok!);
-        if (cok && decode) {
+        if (cok && decode.length > 0) {
             return true;
         } else {
             return false;
         }
     };
-    console.log(isCokie);
 
     const variant: Variants = {
         open: { opacity: 1, zIndex: 40 },
