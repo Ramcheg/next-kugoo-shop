@@ -38,6 +38,7 @@ export function ManagerModalPanel({
                 clearTimeout(closeTime);
             };
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [success]);
 
     const handleSubmitForm = async (e: FormEvent<HTMLFormElement>) => {

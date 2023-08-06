@@ -49,7 +49,7 @@ export default function AppFooter(): JSX.Element {
                     <FooterChat />
                 </div>
             </div>
-            <div className="container mx-auto block md:hidden fixed bottom-0 z-50">
+            <div className="container mx-auto block md:hidden fixed bottom-0 z-40">
                 <FooterMobNavigation />
             </div>
         </footer>
