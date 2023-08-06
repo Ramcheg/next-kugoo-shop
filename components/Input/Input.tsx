@@ -19,7 +19,7 @@ export function Input({
             required={isRequired}
             className={classNames(className, {
                 [standartInput]: inputType !== "checkbox",
-                ["after:transition-all after:delay-100 appearance-none checked:after:content-['✔'] after:text-xs after:pl-[2px] relative after:text-lavander after:content-[''] after:w-4  after:h-4 after:border after:rounded-sm after:border-solid after:border-black/50 after:-top-2 after:-left-4 after:absolute hover:after:border-lavander after:shadow-lavander disabled:after:bg-slate-300 disabled:after:hover:border-black/50"]:
+                ["after:invalid:border-red-500 after:transition-all after:delay-100 appearance-none checked:after:content-['✔'] after:text-xs after:pl-[2px] relative after:text-lavander after:content-[''] after:w-4  after:h-4 after:border after:rounded-sm after:border-solid after:border-black/50 after:-top-2 after:-left-4 after:absolute hover:after:border-lavander after:shadow-lavander disabled:after:bg-slate-300 disabled:after:hover:border-black/50"]:
                     inputType === "checkbox",
             })}
             {...props}

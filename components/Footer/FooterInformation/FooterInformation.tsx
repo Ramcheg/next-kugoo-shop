@@ -1,4 +1,4 @@
-import { H } from "@/components";
+import { CallUsBtn, H } from "@/components";
 import { IFooterInformation } from "./FooterInformationTypes";
 import toNumberLink from "@/helpers/toNumberLink";
 
@@ -36,7 +36,7 @@ export function FooterInformation(): JSX.Element {
                     <div className="text-xs 2xl:text-ms">{item.name}</div>
                     <a
                         className="transition-colors delay-100 text-base 2xl:text-lg font-medium hover:text-gray-dark"
-                        href={`tell:${numberInLink}`}
+                        href={`tel:${numberInLink}`}
                     >
                         {item.numberPhone}
                     </a>
@@ -53,7 +53,7 @@ export function FooterInformation(): JSX.Element {
                 >
                     <a
                         className="transition-colors delay-100 text-xs 2xl:text-ms text-gray-dark hover:text-black"
-                        href={`tell:${numberInLink}`}
+                        href={`tel:${numberInLink}`}
                     >
                         {item.numberPhone}
                     </a>
@@ -71,9 +71,10 @@ export function FooterInformation(): JSX.Element {
             <div className="grid grid-cols-3 grid-rows-2 lg:gap-y-10 gap-y-2 gap-x-2 lg:gap-x-7">
                 {renderItem}
             </div>
-            <div className="text-lavander text-xs 2xl:text-sm hover:text-lavander-light cursor-pointer absolute top-[.3rem] right-1">
+            <CallUsBtn className="text-lavander text-xs 2xl:text-sm hover:text-lavander-light cursor-pointer absolute top-[.3rem] right-1" />
+            {/* <div className="">
                 Заказать звонок
-            </div>
+            </div> */}
         </div>
     );
 }

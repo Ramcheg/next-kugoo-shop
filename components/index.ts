@@ -21,3 +21,4 @@ export * from "./ArrowBtnCircle/ArrowBtnCircle";
 export * from "./QuestionsAndAnswer/QuestionsAndAnswer";
 export * from "./AdditionallyProduct/AdditionallyProduct";
 export * from "./CallUsBtn/CallUsBtn";
+export * from "./InputPhone/InputPhone";

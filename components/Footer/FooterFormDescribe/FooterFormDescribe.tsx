@@ -2,17 +2,9 @@
 import { Button } from "@/components";
 import { FormEvent, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import {
-    addDoc,
-    collection,
-    doc,
-    getDoc,
-    getDocs,
-    query,
-    setDoc,
-    where,
-} from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/firebase/firebase";
+import { getCurrentDateTime } from "@/helpers/getCurrentTime";
 
 export function FooterFormDescribe(): JSX.Element {
     const [mail, setMail] = useState<string>("");
@@ -42,11 +34,12 @@ export function FooterFormDescribe(): JSX.Element {
                 const colectionRef = collection(db, "MailingList");
                 const q = query(colectionRef, where("email", "==", mail));
                 const compareDate = await getDocs(q);
-                console.log(compareDate);
 
                 if (compareDate.docs.length === 0) {
-                    await addDoc(colectionRef, { email: mail });
+                    const data = getCurrentDateTime();
+                    await addDoc(colectionRef, { email: mail, data });
                     setTextMsg("Спасибо за подписку");
+
                     setMail("");
                 } else {
                     setTextMsg(`Вы уже подписались`);

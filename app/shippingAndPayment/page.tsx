@@ -1,3 +1,3 @@
-export default function ShippingAndPayment(): JSX.Element {
-    return <h1>This is shippingAndPayment</h1>;
+export default function shippingAndPayment(): JSX.Element {
+    return <h1>This is shipingAndPayment</h1>;
 }

@@ -1,18 +1,19 @@
 import { H } from "@/components";
 import { IFooterNavCatalog } from "./FooterNavCatalogTypes";
+import Link from "next/link";
 
 const catalogItems: IFooterNavCatalog[] = [
     {
         name: "Электросамокаты",
-        link: "electric-samokat",
+        link: "catalog/electricSamokat",
     },
     {
         name: "Электроскутеры",
-        link: "electric-scooters",
+        link: "catalog/electricScooters",
     },
     {
         name: "Электровелосипеды",
-        link: "electric-bikes",
+        link: "catalog/electricBikes",
     },
 ];
 
@@ -27,12 +28,12 @@ export function FooterNavCatalor(): JSX.Element {
                     {catalogItems.map(({ link, name }) => {
                         return (
                             <li key={link}>
-                                <a
+                                <Link
                                     className="transition-all duration-100 hover:text-lavander-light"
                                     href={`/${link}`}
                                 >
                                     {name}
-                                </a>
+                                </Link>
                             </li>
                         );
                     })}

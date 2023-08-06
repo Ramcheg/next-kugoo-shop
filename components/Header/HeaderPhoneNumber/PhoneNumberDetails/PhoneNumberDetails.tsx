@@ -59,7 +59,7 @@ export default function PhoneNumberDetails({
                         </p>
                         <a
                             className="font-bold text-base 2xl:text-lg "
-                            href={`tell:+${link}`}
+                            href={`tel:+${link}`}
                         >
                             {item.numberPhone}
                         </a>

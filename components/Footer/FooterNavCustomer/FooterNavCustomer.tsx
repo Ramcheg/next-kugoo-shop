@@ -3,10 +3,10 @@ import { IFooterNavCustumer } from "./FooterNavCustomerTypes";
 import { ReactNode } from "react";
 
 const firstNavCustomerArr: IFooterNavCustumer[] = [
-    { name: "Сервисный центр", link: "service-center" },
-    { name: "Доставка и оплата", link: "shipping-payment" },
-    { name: "Рассрочка", link: "installment-plan" },
-    { name: "Тест-драйв", link: "test-drive" },
+    { name: "Сервисный центр", link: "service" },
+    { name: "Доставка и оплата", link: "shippingAndPayment" },
+    { name: "О магазине", link: "aboutShop" },
+    { name: "Тест-драйв", link: "testDrive" },
 ];
 
 const secondNavCustomerArr: IFooterNavCustumer[] = [

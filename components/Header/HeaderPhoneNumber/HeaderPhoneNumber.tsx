@@ -5,7 +5,6 @@ import PulusIcon from "@/public/PlusTell.svg";
 import "./HeaderPhoneNumber.scss";
 import PhoneNumberDetails from "./PhoneNumberDetails/PhoneNumberDetails";
 import useOpenModal from "@/hooks/useOpenModal";
-import { motion } from "framer-motion";
 
 export function HeaderPhoneNumber({
     widthIcon,
@@ -20,9 +19,9 @@ export function HeaderPhoneNumber({
         >
             <a
                 className="text-black text-xs 2xl:text-base font-bold"
-                href="tell:+380953507692"
+                href="tel:+380953507692"
             >
-                +38 (095) 350 76 92
+                +38 (095) 350-76-92
             </a>
             {widthIcon ? (
                 <PulusIcon
