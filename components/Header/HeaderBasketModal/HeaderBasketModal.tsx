@@ -5,9 +5,8 @@ import { IBasketGoods } from "./HeaderBasketModalProps";
 import thumbnailBasket from "@/public/other/thumbnail_Basket.png";
 import formatCurrency from "@/helpers/formatCurrency";
 import { HeaderBasketModalItem } from "./HeaderBasketModalItem";
-import { useRef, useEffect, useState, Suspense } from "react";
+import { useEffect, useState } from "react";
 import cookies from "js-cookie";
-import cn from "classnames";
 import Link from "next/link";
 
 const basketArr: IBasketGoods[] = [

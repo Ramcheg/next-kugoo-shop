@@ -4,7 +4,6 @@ import { ButtonIcon } from "@/components";
 import { HeaderBasketModal } from "..";
 import cookie from "js-cookie";
 import { Suspense, useEffect, useState } from "react";
-import { IBasketGoods } from "../HeaderBasketModal/HeaderBasketModalProps";
 import { Variants, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 

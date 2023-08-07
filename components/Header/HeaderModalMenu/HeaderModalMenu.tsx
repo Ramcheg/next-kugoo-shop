@@ -1,7 +1,6 @@
 import Link from "next/link";
 import "./HeaderModalMenuStyle.scss";
 
-import ElectroScooterSVG from "@/public/headerMenu/ElectrikScooter.svg";
 import { modalMenu } from "./HeaderModalMenuArr";
 
 export function HeaderModalMenu(): JSX.Element {
