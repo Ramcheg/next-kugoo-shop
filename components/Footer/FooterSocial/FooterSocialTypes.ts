@@ -4,4 +4,5 @@ export interface IFooterSocial {
     name: string;
     icon: ReactNode;
     countDescribe: number;
+    link: string;
 }

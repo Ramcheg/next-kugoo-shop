@@ -16,11 +16,12 @@ const footerPayArr: IFooterPay[] = [
 export function FooterPay(): JSX.Element {
     const renderItems = footerPayArr.map(({ name, icon }) => {
         return (
-            <a href="#" key={name}>
-                <div className="transition-all delay-75 py-[.47rem] px-[.3rem] bg-white border border-solid rounded border-gray-light  hover:border-lavander-light">
-                    {icon}
-                </div>
-            </a>
+            <div
+                key={name}
+                className="transition-all delay-75 py-[.47rem] px-[.3rem] bg-white border border-solid rounded border-gray-light"
+            >
+                {icon}
+            </div>
         );
     });
 

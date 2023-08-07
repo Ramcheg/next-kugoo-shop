@@ -178,21 +178,19 @@ export function HomeSlider(): JSX.Element {
             </div>
             <div className="dots flex md:hidden justify-center gap-3 mt-2">
                 {slideArr.map((item, i) => {
-                    if (i > 0) {
-                        return (
-                            <button
-                                key={i}
-                                className={` h-[2px] w-5  rounded-full  ${
-                                    currentSlide === i
-                                        ? "bg-lavander"
-                                        : "bg-gray-light"
-                                }`}
-                                onClick={() => {
-                                    instanceRef.current?.moveToIdx(i - 1);
-                                }}
-                            />
-                        );
-                    }
+                    return (
+                        <button
+                            key={i}
+                            className={` h-[2px] w-5  rounded-full  ${
+                                currentSlide === i + 1
+                                    ? "bg-lavander"
+                                    : "bg-gray-light"
+                            }`}
+                            onClick={() => {
+                                instanceRef.current?.moveToIdx(i - 1);
+                            }}
+                        />
+                    );
                 })}
             </div>
         </div>
