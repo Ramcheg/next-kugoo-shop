@@ -8,13 +8,22 @@ import PowerSvg from "@/public/card/power.svg";
 import TimerSvg from "@/public/card/timer.svg";
 import { FakeButton } from "../FakeButton/FakeButton";
 import Link from "next/link";
+import { IDate } from "@/helpers/getProductsFireType";
 
-export function ProductCard(): JSX.Element {
+export function ProductCard({
+    name,
+    mainImg,
+    price,
+    descriptionProduct,
+}: IDate): JSX.Element {
+    if (!name) {
+        return <>Loading</>;
+    }
     return (
         <div className="relative transition-all delay-100 overflow-hidden border border-solid rounded-xl border-gray-editible ">
             <div className="">
                 <Image
-                    src="https://firebasestorage.googleapis.com/v0/b/kugoo-shop.appspot.com/o/ElectroSamokat%2FFront%2Fkuter.jpg?alt=media&token=f5f83638-2d16-4962-a544-c9d57cde6538"
+                    src={mainImg}
                     alt="skuter"
                     width={221}
                     height={284}
@@ -27,32 +36,32 @@ export function ProductCard(): JSX.Element {
                         className="text-center md:text-left hover:text-lavander"
                         level={4}
                     >
-                        Kugoo Kirin M4
+                        {name}
                     </H>
                 </Link>
                 <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-x-2 md:gap-x-6 gap-y-1 md:gap-y-4 my-5">
                     <div className="flex gap-2 items-center">
                         <BattarySvg />
                         <span className="text-ms 2xl:text-base text-gray-dark">
-                            2000 mAh
+                            {descriptionProduct?.powerBattary}
                         </span>
                     </div>
                     <div className="flex gap-2 items-center">
                         <SpeedometerSvg />
                         <span className="text-ms 2xl:text-base text-gray-dark">
-                            60 км/ч
+                            {descriptionProduct.speed}
                         </span>
                     </div>
                     <div className="flex gap-2 items-center">
                         <PowerSvg />
                         <span className="text-ms 2xl:text-base text-gray-dark">
-                            1,2 л.с.
+                            {descriptionProduct.power}
                         </span>
                     </div>
                     <div className="flex gap-2 items-center">
                         <TimerSvg />
                         <span className="text-ms 2xl:text-base text-gray-dark">
-                            5 часов
+                            {descriptionProduct.timeBattary}
                         </span>
                     </div>
                 </div>
@@ -62,7 +71,7 @@ export function ProductCard(): JSX.Element {
                             39 900 ₴
                         </div>
                         <div className="text-xl 2xl:text-2xl font-semibold">
-                            29 900 ₴
+                            {price}
                         </div>
                     </div>
                     <div className="flex gap-2 justify-center items-center">
