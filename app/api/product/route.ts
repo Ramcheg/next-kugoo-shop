@@ -1,12 +1,28 @@
+import { getAllProductsFire } from "@/helpers/getAllProductsFire";
 import { getProductsFireType } from "@/helpers/getProductsFireType";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: Request) {
-    // const r = await fetch("https://jsonplaceholder.typicode.com/todos/1").then(
-    //     (response) => response.json()
-    // );
-    const product = await getProductsFireType("price", "<", "5000");
-    // const inJson = JSON.stringify(product);
+export async function GET(req: NextRequest) {
+    const key: string | undefined = req.nextUrl.searchParams
+        .keys()
+        .next().value;
 
-    return NextResponse.json(product);
+    if (typeof key === "string") {
+        try {
+            const value = req.nextUrl.searchParams.get(key) as string;
+            const product = await getProductsFireType(key, "==", value);
+
+            return NextResponse.json(product);
+        } catch (err) {
+            return NextResponse.json({ message: "Error", err });
+        }
+    } else {
+        try {
+            const product = await getAllProductsFire();
+
+            return NextResponse.json(product);
+        } catch (err) {
+            return NextResponse.json({ message: "Error", err });
+        }
+    }
 }

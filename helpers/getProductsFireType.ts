@@ -7,6 +7,7 @@ import {
     getDocs,
     query,
     where,
+    limit,
 } from "firebase/firestore";
 
 export interface IDate extends IProduct {
@@ -16,13 +17,19 @@ export interface IDate extends IProduct {
 export const getProductsFireType = async (
     before: string,
     search: WhereFilterOp,
-    after: string
+    after: string,
+    limited: number = 0
 ) => {
+    let date: IDate[] = [];
     const collectionRef = collection(db, "Products");
-    const q = query(collectionRef, where(before, search, after));
+    let q;
+    if (limited <= 0) {
+        q = query(collectionRef, where(before, search, after));
+    } else {
+        q = query(collectionRef, where(before, search, after), limit(limited));
+    }
     const doc = await getDocs(q);
 
-    let date: IDate[] = [];
     doc.forEach((item) => {
         const data = item.data() as IProduct;
         date.push({ id: item.id, ...data });

@@ -30,7 +30,8 @@
         ".next/types/**/*.ts",
         "svg.d.ts",
         "reset.d.ts",
-        "firebase/firebase.ts"
+        "firebase/firebase.ts",
+        "store/store.ts"
     ],
     "exclude": ["node_modules"]
 }
