@@ -5,8 +5,8 @@ import { ProductCard } from "..";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { useEffect } from "react";
 import {
-    handleFilter,
     addProduct,
+    selectFilterHomeProduct,
 } from "../HomePage/HomeProducts/homeProductSlice";
 
 export function ProductWrapper({
@@ -16,6 +16,7 @@ export function ProductWrapper({
 }): JSX.Element {
     const { electricScooterArr } = useAppSelector((store) => store.homeProduct);
     const dispatch = useAppDispatch();
+    const filteredProducts = useAppSelector(selectFilterHomeProduct);
 
     useEffect(() => {
         dispatch(addProduct(products));
@@ -23,12 +24,12 @@ export function ProductWrapper({
 
     return (
         <div className="grid justify-center  gap-y-10 gap-x-7 grid-cols-[repeat(auto-fit,minmax(0,_150px))] md:grid-cols-[repeat(auto-fit,minmax(0,_225px))] 2xl:grid-cols-[repeat(auto-fit,minmax(0,_300px))] grid-rows-2 mt-12">
-            {electricScooterArr ? (
-                electricScooterArr.map((item, i) => {
+            {filteredProducts && filteredProducts.length > 0 ? (
+                filteredProducts.map((item, i) => {
                     return <ProductCard key={item.id} {...item} />;
                 })
             ) : (
-                <h2 className="text-center mt-12">
+                <h2 className="text-center text-xl  mt-12">
                     Товаров в данной катигории нет
                 </h2>
             )}

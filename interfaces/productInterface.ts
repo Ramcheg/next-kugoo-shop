@@ -33,4 +33,5 @@ export interface IProduct {
     forWrom: string;
     typeTransportare: string;
     mainImg: string;
+    sold: string;
 }
