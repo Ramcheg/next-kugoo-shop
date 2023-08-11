@@ -1,14 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { Button, ModalProduct } from "..";
+import useOpenModal from "@/hooks/useOpenModal";
 
 export function PayForOneClick(): JSX.Element {
-    const [openModal, setOpenModal] = useState<boolean>(false);
-
-    const onOpenModal = () => {
-        setOpenModal((modal) => !modal);
-    };
+    const { onOpenModal, openModal } = useOpenModal();
 
     return (
         <>

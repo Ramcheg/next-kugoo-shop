@@ -1,6 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { H } from "../H/H";
-import { ButtonIcon, PayForOneClick } from "..";
+import { ButtonIcon, FormatSalePrice, PayForOneClick } from "..";
 
 import BattarySvg from "@/public/card/battary.svg";
 import SpeedometerSvg from "@/public/card/speedometer.svg";
@@ -9,18 +11,44 @@ import TimerSvg from "@/public/card/timer.svg";
 import { FakeButton } from "../FakeButton/FakeButton";
 import Link from "next/link";
 import { IDate } from "@/helpers/getProductsFireType";
+import Loading from "@/app/loading";
+import formatNumber from "@/helpers/formatNumber";
+import { formatFromStrToNum } from "@/helpers/formatFromStrToNum";
+import { motion } from "framer-motion";
 
 export function ProductCard({
     name,
     mainImg,
     price,
     descriptionProduct,
+    typeTransportareEN,
+    id,
+    sale,
+    sold,
+    createdData,
+    amount,
 }: IDate): JSX.Element {
     if (!name) {
-        return <>Loading</>;
+        return <Loading />;
     }
+    const isNewProduct = (): boolean => {
+        const currentDate = new Date().getTime();
+        const createProduct = new Date(createdData.seconds * 1000).getTime();
+        const beatweenDate = currentDate - createProduct;
+        if (beatweenDate < 604800000) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    const isNewProd = isNewProduct();
+    console.log(isNewProduct());
     return (
-        <div className="relative transition-all delay-100 overflow-hidden border border-solid rounded-xl border-gray-editible ">
+        <motion.div
+            layout
+            className="relative overflow-hidden border border-solid rounded-xl border-gray-editible flex flex-col justify-between"
+        >
             <div className="">
                 <Image
                     src={mainImg}
@@ -30,12 +58,12 @@ export function ProductCard({
                     className="md:w-full 2xl:w-[100%]  mx-auto mt-[1px]  rounded-t-xl"
                 />
             </div>
-            <div className="flex flex-col items-center mt-3 mx-1 md:mx-4 ">
-                <Link href="#">
-                    <H
-                        className="text-center md:text-left hover:text-lavander"
-                        level={4}
-                    >
+            <div className="flex justify-center flex-col items-center mt-3 mx-1 md:mx-4 ">
+                <Link
+                    className="text-center"
+                    href={`/catalog/${typeTransportareEN}/${id}`}
+                >
+                    <H className=" text-center hover:text-lavander" level={4}>
                         {name}
                     </H>
                 </Link>
@@ -43,37 +71,38 @@ export function ProductCard({
                     <div className="flex gap-2 items-center">
                         <BattarySvg />
                         <span className="text-ms 2xl:text-base text-gray-dark">
-                            {descriptionProduct?.powerBattary}
+                            {`${formatNumber(
+                                formatFromStrToNum(
+                                    descriptionProduct.powerBattary.slice(0, -3)
+                                )
+                            )} mAh`}
                         </span>
                     </div>
                     <div className="flex gap-2 items-center">
                         <SpeedometerSvg />
                         <span className="text-ms 2xl:text-base text-gray-dark">
-                            {descriptionProduct.speed}
+                            {`${descriptionProduct.speed} км/ч`}
                         </span>
                     </div>
                     <div className="flex gap-2 items-center">
                         <PowerSvg />
                         <span className="text-ms 2xl:text-base text-gray-dark">
-                            {descriptionProduct.power}
+                            {`${descriptionProduct.power} W`}
                         </span>
                     </div>
                     <div className="flex gap-2 items-center">
                         <TimerSvg />
                         <span className="text-ms 2xl:text-base text-gray-dark">
-                            {descriptionProduct.timeBattary}
+                            {`${descriptionProduct.timeBattary} ${
+                                +descriptionProduct.timeBattary < 5
+                                    ? "часа"
+                                    : "часов"
+                            }`}
                         </span>
                     </div>
                 </div>
                 <div className="flex md:flex-row flex-col gap-2 md:gap-6 items-center justify-between mb-4">
-                    <div>
-                        <div className="text-xs 2xl:text-ms text-gray-dark line-through">
-                            39 900 ₴
-                        </div>
-                        <div className="text-xl 2xl:text-2xl font-semibold">
-                            {price}
-                        </div>
-                    </div>
+                    <FormatSalePrice sale={sale} price={price} />
                     <div className="flex gap-2 justify-center items-center">
                         <ButtonIcon
                             colorIcon="lavander"
@@ -94,14 +123,28 @@ export function ProductCard({
                 colorIcon="white"
                 icon="compare"
             />
-            <FakeButton
-                className="absolute top-6 left-6"
-                bgColor="red"
-                textColor="white"
-                isUpperCase
-            >
-                хит
-            </FakeButton>
-        </div>
+            {+sold > 5 && (
+                <FakeButton
+                    className="absolute top-6 left-6"
+                    bgColor="red"
+                    textColor="white"
+                    isUpperCase
+                >
+                    хит
+                </FakeButton>
+            )}
+            {isNewProd && (
+                <FakeButton
+                    className={`absolute top-6 ${
+                        +sold > 5 ? "left-24" : " left-6"
+                    }`}
+                    bgColor="green"
+                    textColor="white"
+                    isUpperCase={false}
+                >
+                    Новинка
+                </FakeButton>
+            )}
+        </motion.div>
     );
 }

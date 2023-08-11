@@ -12,11 +12,13 @@ export type filterType =
 interface IHomeProductState {
     homefilter: filterType;
     electricScooterArr: IProductWithoutFirebase[];
+    loading: "loading" | "success";
 }
 
 const initialState: IHomeProductState = {
     homefilter: "default",
     electricScooterArr: [],
+    loading: "loading",
 };
 
 export const homeProductSlice = createSlice({
@@ -31,6 +33,7 @@ export const homeProductSlice = createSlice({
             action: PayloadAction<IProductWithoutFirebase[]>
         ) => {
             state.electricScooterArr = action.payload;
+            state.loading = "success";
         },
     },
 });

@@ -34,4 +34,6 @@ export interface IProduct {
     typeTransportare: string;
     mainImg: string;
     sold: string;
+    typeTransportareEN: string;
+    amount: boolean;
 }

@@ -3,13 +3,15 @@ import { HomeProductsSort } from "../HomeProductsSort/HomeProductsSort";
 import { IDate } from "@/helpers/getProductsFireType";
 import { Suspense } from "react";
 import Loading from "@/app/loading";
+import Link from "next/link";
+import { IErrorResponse } from "@/interfaces/errorInterface";
 
 export async function HomeProducts(): Promise<JSX.Element> {
-    const respons = (await fetch(`${process.env.BASE_URL}/product`).then(
-        (res) => {
-            return res.json();
-        }
-    )) as IDate[] | [];
+    const respons = (await fetch(`${process.env.BASE_URL}/product`, {
+        next: { revalidate: 240 },
+    }).then((res) => {
+        return res.json();
+    })) as IDate[] | [] | IErrorResponse;
 
     return (
         <>
@@ -22,17 +24,23 @@ export async function HomeProducts(): Promise<JSX.Element> {
                 </div>
             </div>
             <Suspense fallback={<Loading />}>
-                <ProductWrapper products={respons} />
+                {respons instanceof Array ? (
+                    <ProductWrapper products={respons} />
+                ) : (
+                    <h2>Error</h2>
+                )}
             </Suspense>
 
             <div className="flex justify-center mt-4 md:mt-8">
-                <Button
-                    className=" border-gray-dark "
-                    color="gray"
-                    size="middle"
-                >
-                    Смотреть все
-                </Button>
+                <Link href={"/catalog/electricSamokat"}>
+                    <Button
+                        className=" border-gray-dark "
+                        color="gray"
+                        size="middle"
+                    >
+                        Смотреть все
+                    </Button>
+                </Link>
             </div>
         </>
     );

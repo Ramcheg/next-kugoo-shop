@@ -10,7 +10,7 @@ export function ModalProduct({
     onOpenModal: () => void;
 }): JSX.Element {
     return (
-        <ModalWrapperCenter>
+        <ModalWrapperCenter openModal>
             <div className="flex flex-col lg:flex-row items-center gap-6 m-20 lg:m-12">
                 <div className="w-[100%] lg:w-[60%] m-8">
                     <H level={3}>

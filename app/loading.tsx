@@ -1,3 +1,3 @@
 export default function Loading() {
-    return <p>Loading...</p>;
+    return <div className="spinner mx-auto mt-28 mb-28"></div>;
 }

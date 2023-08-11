@@ -8,31 +8,41 @@ import {
     addProduct,
     selectFilterHomeProduct,
 } from "../HomePage/HomeProducts/homeProductSlice";
+import Loading from "@/app/loading";
+import { motion } from "framer-motion";
 
 export function ProductWrapper({
     products,
 }: {
     products: IProductWithoutFirebase[];
 }): JSX.Element {
-    const { electricScooterArr } = useAppSelector((store) => store.homeProduct);
     const dispatch = useAppDispatch();
     const filteredProducts = useAppSelector(selectFilterHomeProduct);
-
+    const loading = useAppSelector((store) => store.homeProduct.loading);
+    const filteredProductSlice = filteredProducts.slice(0, 8);
     useEffect(() => {
         dispatch(addProduct(products));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const renderItem =
+        filteredProductSlice && filteredProductSlice.length > 0 ? (
+            filteredProductSlice.map((item, i) => {
+                return <ProductCard key={item.id} {...item} />;
+            })
+        ) : (
+            <h2 className="text-center text-xl  mt-12">
+                Товаров в данной катигории нет
+            </h2>
+        );
+
     return (
-        <div className="grid justify-center  gap-y-10 gap-x-7 grid-cols-[repeat(auto-fit,minmax(0,_150px))] md:grid-cols-[repeat(auto-fit,minmax(0,_225px))] 2xl:grid-cols-[repeat(auto-fit,minmax(0,_300px))] grid-rows-2 mt-12">
-            {filteredProducts && filteredProducts.length > 0 ? (
-                filteredProducts.map((item, i) => {
-                    return <ProductCard key={item.id} {...item} />;
-                })
-            ) : (
-                <h2 className="text-center text-xl  mt-12">
-                    Товаров в данной катигории нет
-                </h2>
-            )}
-        </div>
+        <motion.div
+            style={{ opacity: 1 }}
+            layout
+            className="grid justify-center gap-y-10 gap-x-7  grid-cols-[repeat(auto-fit,minmax(0,_150px))]  sm:grid-cols-[repeat(auto-fit,minmax(150px,_250x))] 2xl:grid-cols-[repeat(auto-fit,minmax(0,_300px))] grid-rows-1 auto-rows-fr mt-12"
+        >
+            {loading === "loading" ? <Loading /> : renderItem}
+        </motion.div>
     );
 }
