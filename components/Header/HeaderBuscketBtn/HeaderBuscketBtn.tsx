@@ -2,13 +2,13 @@
 
 import { ButtonIcon } from "@/components";
 import { HeaderBasketModal } from "..";
-import cookie from "js-cookie";
 import { Suspense, useEffect, useState } from "react";
 import { Variants, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { IBasketGoods } from "../HeaderBasketModal/HeaderBasketModalProps";
 
 export function HeaderBuscketBtn(): JSX.Element {
-    const [isCokie, setIsCokie] = useState<boolean>(false);
+    const [isLocalStor, setIsLocalStor] = useState<boolean>(false);
     const [openBusket, setOpenBusket] = useState<boolean>(false);
     const path = usePathname();
 
@@ -17,16 +17,20 @@ export function HeaderBuscketBtn(): JSX.Element {
     }, [path]);
 
     useEffect(() => {
-        setIsCokie(isCookieBusket());
+        setIsLocalStor(isLocalStorBusket());
         return () => {
             setOpenBusket(false);
         };
     }, []);
-    const isCookieBusket = () => {
-        const cok = cookie.get("busket");
-        const decode = decodeURI(cok!);
-        if (cok && decode.length > 0) {
-            return true;
+    const isLocalStorBusket = () => {
+        const localStor = localStorage.getItem("basket");
+        if (localStor) {
+            const decode = JSON.parse(localStor) as IBasketGoods[];
+            if (decode.length > 0) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
@@ -42,7 +46,7 @@ export function HeaderBuscketBtn(): JSX.Element {
                 onClick={() => setOpenBusket(!openBusket)}
                 icon="shopping"
                 colorIcon="lavander"
-                iconFill={isCokie}
+                iconFill={isLocalStor}
             >
                 Корзина
             </ButtonIcon>

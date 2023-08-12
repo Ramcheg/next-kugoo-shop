@@ -6,30 +6,7 @@ import thumbnailBasket from "@/public/other/thumbnail_Basket.png";
 import formatCurrency from "@/helpers/formatCurrency";
 import { HeaderBasketModalItem } from "./HeaderBasketModalItem";
 import { useEffect, useState } from "react";
-import cookies from "js-cookie";
 import Link from "next/link";
-
-const basketArr: IBasketGoods[] = [
-    {
-        name: "Kugoo Kirin M4",
-        count: 1,
-        price: 29000,
-        thumbnail: thumbnailBasket,
-    },
-    { name: "Kugoo Kirin M4", count: 2, price: 1, thumbnail: thumbnailBasket },
-    {
-        name: "Kugoo Kirin M4",
-        count: 1,
-        price: 29000,
-        thumbnail: thumbnailBasket,
-    },
-    {
-        name: "Kugoo Kirin M4",
-        count: 4,
-        price: 29000,
-        thumbnail: thumbnailBasket,
-    },
-];
 
 export function HeaderBasketModal(): JSX.Element {
     const [allPrice, setAllPrice] = useState<number>(0);
@@ -37,20 +14,16 @@ export function HeaderBasketModal(): JSX.Element {
 
     useEffect(() => {
         let currenPrice = 0;
-        product.forEach(({ price }) => {
-            currenPrice += price;
+        product.forEach(({ price, sale }) => {
+            currenPrice += Math.floor(price - price * (+sale / 100));
         });
         setAllPrice(currenPrice);
     }, [product]);
     useEffect(() => {
-        if (cookies.get("busket")) {
-            const cok = cookies.get("busket");
-            const decode = JSON.parse(decodeURI(cok!)) as IBasketGoods[];
+        const localStorArr = localStorage.getItem("basket");
+        if (localStorArr) {
+            const decode = JSON.parse(localStorArr) as IBasketGoods[];
             setProduct(decode);
-        } else {
-            const jsonEncode = encodeURI(JSON.stringify(basketArr));
-            cookies.set("busket", jsonEncode, { path: "/", expires: 14 });
-            setProduct([]);
         }
     }, []);
 
@@ -70,22 +43,18 @@ export function HeaderBasketModal(): JSX.Element {
         return `${count} ${wordForms[2]}`;
     }
 
-    const deletedProduct = (id: number) => {
-        const newProduct = product.filter((item, index) => index !== id);
+    const deletedProduct = (id: string) => {
+        const newProduct = product.filter((item, index) => item.id !== id);
         setProduct(newProduct);
-
-        cookies.remove("busket");
-        const jsonEncode = encodeURI(JSON.stringify(newProduct));
-        cookies.set("busket", jsonEncode, { path: "/", expires: 14 });
+        localStorage.setItem("basket", JSON.stringify(newProduct));
     };
 
     const renderItems = product.map((goods, i) => {
         return (
             <HeaderBasketModalItem
                 deletedProduct={deletedProduct}
-                key={i}
+                key={goods.id}
                 {...goods}
-                id={i}
             />
         );
     });

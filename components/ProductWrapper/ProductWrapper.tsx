@@ -40,7 +40,7 @@ export function ProductWrapper({
         <motion.div
             style={{ opacity: 1 }}
             layout
-            className="grid justify-center gap-y-10 gap-x-7  grid-cols-[repeat(auto-fit,minmax(0,_150px))]  sm:grid-cols-[repeat(auto-fit,minmax(150px,_250x))] 2xl:grid-cols-[repeat(auto-fit,minmax(0,_300px))] grid-rows-1 auto-rows-fr mt-12"
+            className="grid justify-center gap-y-10 gap-x-7  grid-cols-[repeat(auto-fit,minmax(0,_150px))]  sm:grid-cols-[repeat(auto-fit,minmax(150px,_250x))] md:grid-cols-[repeat(auto-fit,minmax(0,_300px))] grid-rows-1 auto-rows-fr mt-12"
         >
             {loading === "loading" ? <Loading /> : renderItem}
         </motion.div>

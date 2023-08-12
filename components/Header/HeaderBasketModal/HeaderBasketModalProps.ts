@@ -1,17 +1,14 @@
 import { StaticImageData } from "next/image";
 
 export interface IBasketGoods {
+    id: string;
     name: string;
     price: number;
     count: number;
-    thumbnail: StaticImageData;
+    thumbnail: string;
+    sale: string;
 }
 
-export interface IBasketGoodsItem {
-    name: string;
-    price: number;
-    count: number;
-    thumbnail: StaticImageData;
-    deletedProduct: (id: number) => void;
-    id: number;
+export interface IBasketGoodsItem extends IBasketGoods {
+    deletedProduct: (id: string) => void;
 }

@@ -24,3 +24,6 @@ export * from "./CallUsBtn/CallUsBtn";
 export * from "./InputPhone/InputPhone";
 export * from "./ProductWrapper/ProductWrapper";
 export * from "./FormatSalePrice/FormatSalePrice";
+export * from "./AddInBusketBtn/AddInBusketBtn";
+export * from "./AddInFavoriteBtn/AddInFavoriteBtn";
+export * from "./AddInCompareBtn/AddInCompareBtn";
