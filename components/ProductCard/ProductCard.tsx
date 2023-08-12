@@ -24,7 +24,8 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { IBasketGoods } from "../Header/HeaderBasketModal/HeaderBasketModalProps";
 import { localStorageNameType } from "@/interfaces/localStorageTypes";
-import { formatProcentCurrency } from "@/helpers/formatProcentCurrency";
+import { useAppDispatch, useAppSelector } from "@/store/store";
+import { initLocalStorArr } from "./ProductCardSlice";
 
 export function ProductCard({
     name,
@@ -43,29 +44,26 @@ export function ProductCard({
     const [isFavoriteTrue, SetIsFavoriteTrue] = useState<boolean>(false);
     const [isCompareTrue, SetIsCompareTrue] = useState<boolean>(false);
 
+    const { basketArr, compareArr, favoriteArr } = useAppSelector(
+        (store) => store.productCard
+    );
+    const dispatch = useAppDispatch();
+
     useEffect(() => {
-        function checkBasketStorage(localStorName: localStorageNameType) {
-            const storage = localStorage.getItem(localStorName);
-            if (storage && storage !== "") {
-                const parse = JSON.parse(storage) as IBasketGoods[];
-                if (parse.length > 0) {
-                    const filterProduct = parse.filter(
-                        (item) => item.id === id
-                    );
-                    return filterProduct.length > 0;
-                } else {
-                    return false;
-                }
+        function checkIsArr(arr: IBasketGoods[]) {
+            if (arr.length > 0) {
+                const filterProduct = arr.filter((item) => item.id === id);
+                return filterProduct.length > 0;
             } else {
                 return false;
             }
         }
 
-        SetIsBusketTrue(checkBasketStorage("basket"));
-        SetIsFavoriteTrue(checkBasketStorage("favorite"));
-        SetIsFavoriteTrue(checkBasketStorage("compare"));
+        SetIsBusketTrue(checkIsArr(basketArr));
+        SetIsFavoriteTrue(checkIsArr(favoriteArr));
+        SetIsFavoriteTrue(checkIsArr(compareArr));
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [basketArr, favoriteArr, compareArr]);
 
     if (!name) {
         return <Loading />;
@@ -128,6 +126,12 @@ export function ProductCard({
             const deleteProduct = localStor.filter((item) => item.id !== id);
             localStorage.setItem(localStorName, JSON.stringify(deleteProduct));
             changeEventStorage(localStorName, false);
+            dispatch(
+                initLocalStorArr({
+                    arr: deleteProduct,
+                    localStorType: localStorName,
+                })
+            );
         } else {
             const newArr: IBasketGoods = {
                 id,
@@ -141,6 +145,12 @@ export function ProductCard({
             const newArrProduct: IBasketGoods[] = [...localStor, newArr];
             localStorage.setItem(localStorName, JSON.stringify(newArrProduct));
             changeEventStorage(localStorName, true);
+            dispatch(
+                initLocalStorArr({
+                    arr: newArrProduct,
+                    localStorType: localStorName,
+                })
+            );
         }
     };
     const isNewProd = isNewProduct();

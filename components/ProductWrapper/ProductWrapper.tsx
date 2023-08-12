@@ -10,6 +10,9 @@ import {
 } from "../HomePage/HomeProducts/homeProductSlice";
 import Loading from "@/app/loading";
 import { motion } from "framer-motion";
+import { localStorageNameType } from "@/interfaces/localStorageTypes";
+import { IBasketGoods } from "../Header/HeaderBasketModal/HeaderBasketModalProps";
+import { initLocalStorArr } from "../ProductCard/ProductCardSlice";
 
 export function ProductWrapper({
     products,
@@ -21,6 +24,24 @@ export function ProductWrapper({
     const loading = useAppSelector((store) => store.homeProduct.loading);
     const filteredProductSlice = filteredProducts.slice(0, 8);
     useEffect(() => {
+        function checkBasketStorage(localStorName: localStorageNameType) {
+            const storage = localStorage.getItem(localStorName);
+            if (storage && storage !== "") {
+                const parse = JSON.parse(storage) as IBasketGoods[];
+                dispatch(
+                    initLocalStorArr({
+                        arr: parse,
+                        localStorType: localStorName,
+                    })
+                );
+            } else {
+                return [];
+            }
+        }
+
+        checkBasketStorage("basket");
+        checkBasketStorage("favorite");
+        checkBasketStorage("compare");
         dispatch(addProduct(products));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);

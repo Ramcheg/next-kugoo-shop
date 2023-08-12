@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import homeProduct from "@/components/HomePage/HomeProducts/homeProductSlice";
+import productCard from "@/components/ProductCard/ProductCardSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 const store = configureStore({
     reducer: {
         homeProduct,
+        productCard,
     },
 });
 

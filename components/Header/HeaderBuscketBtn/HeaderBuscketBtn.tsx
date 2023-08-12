@@ -6,11 +6,13 @@ import { Suspense, useEffect, useState } from "react";
 import { Variants, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { IBasketGoods } from "../HeaderBasketModal/HeaderBasketModalProps";
+import store, { useAppSelector } from "@/store/store";
 
 export function HeaderBuscketBtn(): JSX.Element {
     const [isLocalStor, setIsLocalStor] = useState<boolean>(false);
     const [openBusket, setOpenBusket] = useState<boolean>(false);
     const path = usePathname();
+    const { basketArr } = useAppSelector((store) => store.productCard);
 
     useEffect(() => {
         setOpenBusket(false);
@@ -18,10 +20,8 @@ export function HeaderBuscketBtn(): JSX.Element {
 
     useEffect(() => {
         setIsLocalStor(isLocalStorBusket());
-        return () => {
-            setOpenBusket(false);
-        };
-    }, []);
+    }, [basketArr]);
+
     const isLocalStorBusket = () => {
         const localStor = localStorage.getItem("basket");
         if (localStor) {

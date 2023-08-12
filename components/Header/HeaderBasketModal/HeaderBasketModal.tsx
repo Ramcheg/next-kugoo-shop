@@ -7,18 +7,22 @@ import formatCurrency from "@/helpers/formatCurrency";
 import { HeaderBasketModalItem } from "./HeaderBasketModalItem";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useAppDispatch, useAppSelector } from "@/store/store";
+import { initLocalStorArr } from "@/components/ProductCard/ProductCardSlice";
 
 export function HeaderBasketModal(): JSX.Element {
     const [allPrice, setAllPrice] = useState<number>(0);
     const [product, setProduct] = useState<IBasketGoods[]>([]);
+    const { basketArr } = useAppSelector((store) => store.productCard);
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         let currenPrice = 0;
-        product.forEach(({ price, sale }) => {
+        basketArr.forEach(({ price, sale }) => {
             currenPrice += Math.floor(price - price * (+sale / 100));
         });
         setAllPrice(currenPrice);
-    }, [product]);
+    }, [basketArr]);
     useEffect(() => {
         const localStorArr = localStorage.getItem("basket");
         if (localStorArr) {
@@ -44,12 +48,15 @@ export function HeaderBasketModal(): JSX.Element {
     }
 
     const deletedProduct = (id: string) => {
-        const newProduct = product.filter((item, index) => item.id !== id);
+        const newProduct = basketArr.filter((item, index) => item.id !== id);
         setProduct(newProduct);
+        dispatch(
+            initLocalStorArr({ arr: newProduct, localStorType: "basket" })
+        );
         localStorage.setItem("basket", JSON.stringify(newProduct));
     };
 
-    const renderItems = product.map((goods, i) => {
+    const renderItems = basketArr.map((goods, i) => {
         return (
             <HeaderBasketModalItem
                 deletedProduct={deletedProduct}
@@ -65,11 +72,11 @@ export function HeaderBasketModal(): JSX.Element {
                 <div className=" bg-gray-light  px-[1.25rem] py-4 flex items-center justify-between gap-[5.3rem]">
                     <div className="font-medium text-lg">В вашей корзине</div>
                     <div className="text-sm 2xl:text-base text-gray-dark ">
-                        {formatGoodsText(product.length)}
+                        {formatGoodsText(basketArr.length)}
                     </div>
                 </div>
                 <div className="overflow-y-auto bg-white h-[13rem] ">
-                    {product.length === 0 ? (
+                    {basketArr.length === 0 ? (
                         <h2 className="text-center text-xl 2xl:text-2xl mt-10 ">
                             У вас нет товаров в корзине
                         </h2>
@@ -79,7 +86,7 @@ export function HeaderBasketModal(): JSX.Element {
                     <div className=""></div>
                 </div>
                 <div className="flex bg-white gap-[3.44rem] px-[1.25rem] py-4 items-center shadow-[0px_-20px_20px_-20px_rgba(0,0,0,0.16)]">
-                    <div className={product.length > 0 ? "block" : "hidden"}>
+                    <div className={basketArr.length > 0 ? "block" : "hidden"}>
                         <p className="text-sm 2xl:text-base text-gray-dark">
                             Сумма:
                         </p>
@@ -92,8 +99,8 @@ export function HeaderBasketModal(): JSX.Element {
                             className="mx-auto"
                             color="lavander"
                             size="dropDown"
-                            isDisabled={product.length == 0}
-                            isHover={product.length !== 0}
+                            isDisabled={basketArr.length == 0}
+                            isHover={basketArr.length !== 0}
                         >
                             Перейти к корзине
                         </Button>
