@@ -1,23 +1,17 @@
 "use client";
 
-import Image from "next/image";
-
-import managerImg from "@/public/menengerWoman.png";
 import Link from "next/link";
+import Image from "next/image";
 import { Button, H, Input, InputPhone, ModalWrapperCenter } from "..";
-import { FormEvent, useEffect, useState } from "react";
-import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
-import { db } from "@/firebase/firebase";
-import toNumberLink from "@/helpers/toNumberLink";
-import { getCurrentDateTime } from "@/helpers/getCurrentTime";
+import { IPoductModalProps } from "@/interfaces/modalInterfaces";
 import { usePostModalNumber } from "@/hooks/usePostModalNumber";
 
-export function ManagerModalPanel({
+export function ModalPreOrderForOneClick({
+    product: { mainImg, name, id },
     onOpenModal,
-    openModal,
 }: {
     onOpenModal: () => void;
-    openModal: boolean;
+    product: IPoductModalProps;
 }): JSX.Element {
     const {
         errorText,
@@ -25,14 +19,17 @@ export function ManagerModalPanel({
         numberPhone,
         setNumberPhone,
         success,
-    } = usePostModalNumber(onOpenModal, "ManengerDB");
+    } = usePostModalNumber(onOpenModal, "PreOrderProductDB", name, id);
 
     if (success) {
         return (
-            <ModalWrapperCenter openModal={openModal}>
+            <ModalWrapperCenter openModal>
                 <div className="flex flex-col lg:flex-row items-center gap-6 m-20 lg:m-10">
-                    <div className="w-[100%]  m-8">
-                        <H level={3}>Менеджер позвонит вам в течение 5 минут</H>
+                    <div className="w-[100%]  m-8 text-center">
+                        <H level={3}>
+                            Спасибо за предзаказ. С вами свяжутся в ближайшее
+                            время
+                        </H>
                         <div className="mx-auto text-2xl animate-pulse mt-4 w-16 h-16 rounded-full bg-green-500 flex items-center justify-center text-white">
                             &#10004;
                         </div>
@@ -43,50 +40,47 @@ export function ManagerModalPanel({
     }
 
     return (
-        <ModalWrapperCenter openModal={openModal}>
-            <div className="flex flex-col lg:flex-row items-center gap-6 m-20 lg:m-10">
+        <ModalWrapperCenter openModal>
+            <div className="flex flex-col lg:flex-row items-center gap-6 m-20 lg:m-12">
                 <div className="w-[100%] lg:w-[60%] m-8">
-                    <H level={3}>Менеджер позвонит вам в течение 5 минут</H>
+                    <H level={3}>
+                        {`Оформите предзаказ на электросамокат ${name}`}
+                    </H>
                     <div className="mt-2">
-                        ответит на все вопросы и проконсультирует по продуктам
-                        Kugoo
+                        Сообщим вам, когда товар появится в наличии
                     </div>
                     <form
-                        onSubmit={(e) => handleSubmitForm(e)}
                         action="forEmail"
                         className="mt-6"
+                        onSubmit={(e) => handleSubmitForm(e)}
                     >
                         <InputPhone
                             onChange={(e) => setNumberPhone(e.target.value)}
                             value={numberPhone}
                         />
+                        <div className="text-red-400">{errorText}</div>
                         <Button
-                            color="lavander"
+                            color="orange"
                             size="middle"
                             typeButton="submit"
                             className="mt-4"
                         >
-                            Позвоните мне
+                            Оформить предзаказ
                         </Button>
-                        {errorText && (
-                            <div className="text-red-400 text-sm">
-                                {errorText}
-                            </div>
-                        )}
                         <label className="flex items-center mt-4 gap-3">
                             <Input
-                                isRequired
                                 inputType="checkbox"
                                 nameInput="policy"
+                                required
                             />
                             <div className="w-3/4">
                                 Нажимая на кнопку, вы соглашаетесь на обработку
                                 персональных данных
                                 <Link
-                                    className="text-lavander-light ml-1"
+                                    className="text-lavander-light"
                                     href={"/policy"}
                                 >
-                                    политикой конфиденциальности
+                                    <span> политикой конфиденциальности</span>
                                 </Link>
                             </div>
                         </label>
@@ -94,10 +88,10 @@ export function ManagerModalPanel({
                 </div>
                 <div className="hidden lg:block">
                     <Image
-                        src={managerImg}
-                        alt="manager"
-                        width={406}
-                        height={428}
+                        src={mainImg}
+                        alt="skuter"
+                        width={450}
+                        height={630}
                     />
                 </div>
                 <div

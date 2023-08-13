@@ -11,14 +11,13 @@ import {
     REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-
 import homeProduct from "@/components/HomePage/HomeProducts/homeProductSlice";
 import productCard from "@/components/ProductCard/ProductCardSlice";
 
 const reducers = combineReducers({ homeProduct, productCard });
 
 const persistConfig = {
-    key: "root",
+    key: "cardState",
     storage,
     blacklist: ["homeProduct"],
 };

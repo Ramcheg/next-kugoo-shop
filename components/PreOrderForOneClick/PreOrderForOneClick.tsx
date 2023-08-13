@@ -2,10 +2,10 @@
 
 import { Button } from "..";
 import useOpenModal from "@/hooks/useOpenModal";
-import { ModalPayForOneClick } from "./ModalPayForOneClick";
+import { ModalPreOrderForOneClick } from "./ModalPreOrderForOneClick";
 import { IPoductModalProps } from "@/interfaces/modalInterfaces";
 
-export function PayForOneClick({
+export function PreOrderForOneClick({
     product: { id, mainImg, name },
 }: {
     product: IPoductModalProps;
@@ -19,14 +19,14 @@ export function PayForOneClick({
                     onOpenModal();
                 }}
                 className="w-full"
-                color="lavander"
+                color="orange"
                 size="small"
             >
-                Купить в 1 клик
+                Оформить предзаказ
             </Button>
             {openModal ? (
-                <ModalPayForOneClick
-                    product={{ id, mainImg, name }}
+                <ModalPreOrderForOneClick
+                    product={{ mainImg, name, id }}
                     onOpenModal={onOpenModal}
                 />
             ) : null}

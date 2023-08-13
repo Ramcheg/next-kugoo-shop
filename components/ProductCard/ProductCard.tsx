@@ -8,6 +8,7 @@ import {
     AddInFavoriteBtn,
     FormatSalePrice,
     PayForOneClick,
+    PreOrderForOneClick,
 } from "..";
 
 import BattarySvg from "@/public/card/battary.svg";
@@ -39,6 +40,7 @@ export function ProductCard({
     createdData,
     amount,
     thumpnail,
+    countProduct,
 }: IDate): JSX.Element {
     const [isBusketTrue, SetIsBusketTrue] = useState<boolean>(false);
     const [isFavoriteTrue, SetIsFavoriteTrue] = useState<boolean>(false);
@@ -61,7 +63,7 @@ export function ProductCard({
 
         SetIsBusketTrue(checkIsArr(basketArr));
         SetIsFavoriteTrue(checkIsArr(favoriteArr));
-        SetIsFavoriteTrue(checkIsArr(compareArr));
+        SetIsCompareTrue(checkIsArr(compareArr));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [basketArr, favoriteArr, compareArr]);
 
@@ -77,15 +79,6 @@ export function ProductCard({
             return true;
         } else {
             return false;
-        }
-    };
-
-    const setStorage = (localStorName: localStorageNameType) => {
-        const storage = localStorage.getItem(localStorName);
-        if (storage && storage !== "") {
-            return JSON.parse(storage) as IBasketGoods[];
-        } else {
-            return [];
         }
     };
 
@@ -120,11 +113,23 @@ export function ProductCard({
         }
     };
 
+    const getStor = (localStorName: localStorageNameType) => {
+        switch (localStorName) {
+            case "basket":
+                return basketArr;
+            case "favorite":
+                return favoriteArr;
+            case "compare":
+                return compareArr;
+            default:
+                break;
+        }
+    };
+
     const getLocalStorage = (localStorName: localStorageNameType) => {
-        const localStor = setStorage(localStorName);
-        if (getEventStorage(localStorName)) {
+        const localStor = getStor(localStorName);
+        if (getEventStorage(localStorName) && localStor) {
             const deleteProduct = localStor.filter((item) => item.id !== id);
-            localStorage.setItem(localStorName, JSON.stringify(deleteProduct));
             changeEventStorage(localStorName, false);
             dispatch(
                 initLocalStorArr({
@@ -142,15 +147,16 @@ export function ProductCard({
                 thumbnail:
                     typeof thumpnail == "string" ? thumpnail : thumpnail[0],
             };
-            const newArrProduct: IBasketGoods[] = [...localStor, newArr];
-            localStorage.setItem(localStorName, JSON.stringify(newArrProduct));
-            changeEventStorage(localStorName, true);
-            dispatch(
-                initLocalStorArr({
-                    arr: newArrProduct,
-                    localStorType: localStorName,
-                })
-            );
+            if (localStor) {
+                const newArrProduct: IBasketGoods[] = [...localStor, newArr];
+                changeEventStorage(localStorName, true);
+                dispatch(
+                    initLocalStorArr({
+                        arr: newArrProduct,
+                        localStorType: localStorName,
+                    })
+                );
+            }
         }
     };
     const isNewProd = isNewProduct();
@@ -229,11 +235,16 @@ export function ProductCard({
                     </div>
                 </div>
             </div>
-            <PayForOneClick />
+            {+countProduct > 0 ? (
+                <PayForOneClick product={{ id, mainImg, name }} />
+            ) : (
+                <PreOrderForOneClick product={{ id, mainImg, name }} />
+            )}
+
             <AddInCompareBtn
                 className="absolute  top-4 right-4"
                 getLocalStorage={getLocalStorage}
-                isItemInLocalStor={isBusketTrue ? isBusketTrue : false}
+                isItemInLocalStor={isCompareTrue ? isCompareTrue : false}
             />
             {+sold > 5 && (
                 <FakeButton

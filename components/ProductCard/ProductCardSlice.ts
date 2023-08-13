@@ -30,7 +30,14 @@ const productCardSlice = createSlice({
                     state.basketArr = action.payload.arr;
                     break;
                 case "compare":
-                    state.compareArr = action.payload.arr;
+                    let oldCompareArr = action.payload.arr;
+
+                    if (oldCompareArr.length > 3) {
+                        const sliceArr = oldCompareArr.slice(-3);
+                        state.compareArr = sliceArr;
+                    } else {
+                        state.compareArr = oldCompareArr;
+                    }
                     break;
                 case "favorite":
                     state.favoriteArr = action.payload.arr;

@@ -36,4 +36,5 @@ export interface IProduct {
     sold: string;
     typeTransportareEN: string;
     amount: boolean;
+    countProduct: string;
 }

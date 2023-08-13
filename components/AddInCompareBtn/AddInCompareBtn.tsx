@@ -1,3 +1,5 @@
+"use client";
+
 import classNames from "classnames";
 import { ButtonIcon } from "../ButtonIcon/ButtonIcon";
 import { IAddInCompareProps } from "./AddInCompareTypes";

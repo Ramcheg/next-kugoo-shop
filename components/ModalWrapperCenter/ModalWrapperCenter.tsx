@@ -26,6 +26,7 @@ export function ModalWrapperCenter({
             zIndex: -20,
         },
     };
+
     const variantChildren: Variants = {
         open: {
             scale: 1,
@@ -34,8 +35,6 @@ export function ModalWrapperCenter({
         hidden: {
             scale: 0,
             opacity: 0,
-            y: -300,
-            x: -400,
         },
     };
 
@@ -44,11 +43,11 @@ export function ModalWrapperCenter({
             variants={variantContain}
             initial={"hidden"}
             animate={openModal ? "open" : "hidden"}
-            className="fixed bg-white/50 h-full w-full top-0 left-0"
+            className="fixed bg-white/50 h-full w-full top-0 left-0 flex items-center justify-center"
         >
             <motion.div
                 variants={variantChildren}
-                className="absolute z-50 left-[50%] -translate-x-1/2 top-1/2 -translate-y-1/2 bg-white rounded-md"
+                className="relative  z-50  bg-white rounded-md w-full md:w-1/2  mt-10 md:mt-0"
             >
                 {children}
             </motion.div>

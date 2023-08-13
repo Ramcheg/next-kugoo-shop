@@ -12,7 +12,6 @@ import { initLocalStorArr } from "@/components/ProductCard/ProductCardSlice";
 
 export function HeaderBasketModal(): JSX.Element {
     const [allPrice, setAllPrice] = useState<number>(0);
-    const [product, setProduct] = useState<IBasketGoods[]>([]);
     const { basketArr } = useAppSelector((store) => store.productCard);
     const dispatch = useAppDispatch();
 
@@ -23,13 +22,6 @@ export function HeaderBasketModal(): JSX.Element {
         });
         setAllPrice(currenPrice);
     }, [basketArr]);
-    useEffect(() => {
-        const localStorArr = localStorage.getItem("basket");
-        if (localStorArr) {
-            const decode = JSON.parse(localStorArr) as IBasketGoods[];
-            setProduct(decode);
-        }
-    }, []);
 
     function formatGoodsText(count: number): string {
         const wordForms = ["товар", "товара", "товаров"];
@@ -49,11 +41,9 @@ export function HeaderBasketModal(): JSX.Element {
 
     const deletedProduct = (id: string) => {
         const newProduct = basketArr.filter((item, index) => item.id !== id);
-        setProduct(newProduct);
         dispatch(
             initLocalStorArr({ arr: newProduct, localStorType: "basket" })
         );
-        localStorage.setItem("basket", JSON.stringify(newProduct));
     };
 
     const renderItems = basketArr.map((goods, i) => {
@@ -85,7 +75,7 @@ export function HeaderBasketModal(): JSX.Element {
                     )}
                     <div className=""></div>
                 </div>
-                <div className="flex bg-white gap-[3.44rem] px-[1.25rem] py-4 items-center shadow-[0px_-20px_20px_-20px_rgba(0,0,0,0.16)]">
+                <div className="flex bg-white justify-between px-[1.25rem] py-4 items-center shadow-[0px_-20px_20px_-20px_rgba(0,0,0,0.16)]">
                     <div className={basketArr.length > 0 ? "block" : "hidden"}>
                         <p className="text-sm 2xl:text-base text-gray-dark">
                             Сумма:

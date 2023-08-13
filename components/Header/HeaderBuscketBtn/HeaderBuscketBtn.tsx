@@ -6,7 +6,7 @@ import { Suspense, useEffect, useState } from "react";
 import { Variants, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { IBasketGoods } from "../HeaderBasketModal/HeaderBasketModalProps";
-import store, { useAppSelector } from "@/store/store";
+import { useAppSelector } from "@/store/store";
 
 export function HeaderBuscketBtn(): JSX.Element {
     const [isLocalStor, setIsLocalStor] = useState<boolean>(false);
@@ -19,22 +19,8 @@ export function HeaderBuscketBtn(): JSX.Element {
     }, [path]);
 
     useEffect(() => {
-        setIsLocalStor(isLocalStorBusket());
+        setIsLocalStor(basketArr.length !== 0 ? true : false);
     }, [basketArr]);
-
-    const isLocalStorBusket = () => {
-        const localStor = localStorage.getItem("basket");
-        if (localStor) {
-            const decode = JSON.parse(localStor) as IBasketGoods[];
-            if (decode.length > 0) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    };
 
     const variant: Variants = {
         open: { opacity: 1, zIndex: 40 },
