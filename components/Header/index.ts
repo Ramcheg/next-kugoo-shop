@@ -6,3 +6,5 @@ export * from "./HeaderBasketModal/HeaderBasketModal";
 export * from "./HeaderMenu/HeaderMenu";
 export * from "./HeaderModalMenu/HeaderModalMenu";
 export * from "./HeaderBuscketBtn/HeaderBuscketBtn";
+export * from "./HeaderFavoriteBtn/HeaderFavoriteBtn";
+export * from "./HeaderCompareBtn/HeaderCompareBtn";

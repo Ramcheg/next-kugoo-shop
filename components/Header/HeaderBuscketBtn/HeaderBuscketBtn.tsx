@@ -7,6 +7,9 @@ import { Variants, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { IBasketGoods } from "../HeaderBasketModal/HeaderBasketModalProps";
 import { useAppSelector } from "@/store/store";
+import { Badge, Button } from "@mui/material";
+
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
 export function HeaderBuscketBtn(): JSX.Element {
     const [isLocalStor, setIsLocalStor] = useState<boolean>(false);
@@ -33,6 +36,7 @@ export function HeaderBuscketBtn(): JSX.Element {
                 icon="shopping"
                 colorIcon="lavander"
                 iconFill={isLocalStor}
+                bandage={basketArr.length}
             >
                 Корзина
             </ButtonIcon>

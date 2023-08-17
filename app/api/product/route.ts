@@ -9,8 +9,9 @@ export async function GET(req: NextRequest) {
 
     if (typeof key === "string") {
         try {
+            const param = key !== "sold" ? "==" : ">";
             const value = req.nextUrl.searchParams.get(key) as string;
-            const product = await getProductsFireType(key, "==", value);
+            const product = await getProductsFireType(key, param, value);
 
             return NextResponse.json(product);
         } catch (err) {

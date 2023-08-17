@@ -3,6 +3,7 @@ import { H } from "..";
 
 import changesModelImg from "@/public/changesModel.png";
 import servisesImg from "@/public/servises.png";
+import Link from "next/link";
 
 type ContainerServicesType = "model" | "services";
 
@@ -23,12 +24,12 @@ export function ContainerServices({
                             Пройдите тест и выберите электросамокат по своим
                             критериям
                         </div>
-                        <a
-                            href="#"
+                        <Link
+                            href={"/catalog/electricSamokat"}
                             className="transition-all delay-100 text-lavander text-ms 2xl:text-base hover:text-gray-dark"
                         >
                             Подобрать модель →
-                        </a>
+                        </Link>
                     </div>
                     <div className="absolute right-0 top-0 -z-1">
                         <Image
@@ -49,15 +50,15 @@ export function ContainerServices({
                             Сервисное обслуживание
                         </H>
                         <div className="my-4">
-                            Крупнейший сервисный центр в России для продуктов
+                            Крупнейший сервисный центр в Украине для продуктов
                             Kugoo
                         </div>
-                        <a
-                            href="#"
+                        <Link
+                            href={"/services"}
                             className="transition-all delay-100 text-lavander text-ms 2xl:text-base hover:text-gray-dark"
                         >
                             Подобрать модель →
-                        </a>
+                        </Link>
                     </div>
                     <div className="absolute right-0 top-0 -z-1">
                         <Image

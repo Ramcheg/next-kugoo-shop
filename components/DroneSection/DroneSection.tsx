@@ -4,6 +4,7 @@ import droneImg from "@/public/drone.png";
 import { H } from "../H/H";
 import { Button } from "../Button/Button";
 import { FakeButton } from "../FakeButton/FakeButton";
+import Link from "next/link";
 
 export function DroneSection(): JSX.Element {
     return (
@@ -26,11 +27,13 @@ export function DroneSection(): JSX.Element {
                         Акция
                     </FakeButton>
                     <H color="white" level={2} className="mt-7">
-                        Бесплатная доставка электросамокатов по России до 01.09
+                        Бесплатная доставка электросамокатов по Украине до 01.09
                     </H>
-                    <Button color="white" size="small" className="mt-7">
-                        Подробнее
-                    </Button>
+                    <Link href={"/shippingAndPayment"}>
+                        <Button color="white" size="small" className="mt-7">
+                            Подробнее
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </div>

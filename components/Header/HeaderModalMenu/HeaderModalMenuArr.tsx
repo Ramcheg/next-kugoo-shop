@@ -160,7 +160,7 @@ export const modalMenu: IHeaderMenu[] = [
         icon: <VacuumClinerSVG key={"robotVacuumCleaners"} />,
     },
     {
-        name: "Электросамокаты",
+        name: "Весы",
         link: "scales",
         icon: <WeighingSVG key={"scales"} />,
     },

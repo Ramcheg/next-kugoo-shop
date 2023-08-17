@@ -4,4 +4,5 @@ export interface ICatalogArr {
     name: string;
     price: number;
     img: StaticImageData;
+    link: string;
 }

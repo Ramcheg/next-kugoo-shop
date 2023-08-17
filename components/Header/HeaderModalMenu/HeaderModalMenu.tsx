@@ -9,7 +9,7 @@ export function HeaderModalMenu(): JSX.Element {
             <li className="del" key={link}>
                 <h3 className=" 2xl:text-lg text-base font-medium ">
                     <Link
-                        href={link}
+                        href={`/catalog/${link}`}
                         className={`transition-all delay-100 hover:text-lavander hoverLavanderTitle font-medium`}
                     >
                         <div className="flex ml-1 items-center  gap-2 ">

@@ -1,30 +1,41 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { ModalEventText } from "..";
+import Link from "next/link";
 import { ButtonIcon } from "../ButtonIcon/ButtonIcon";
 import { ILocalStorageBtnProps } from "../ProductCard/ProductCardTypes";
+
+import { useSnackbar } from "notistack";
 
 export function AddInFavoriteBtn({
     getLocalStorage,
     isItemInLocalStor,
 }: ILocalStorageBtnProps): JSX.Element {
-    const [openModal, setOpenModal] = useState<boolean>(false);
+    const { enqueueSnackbar } = useSnackbar();
 
-    useEffect(() => {
-        if (openModal) {
-            const clearModal = setTimeout(() => {
-                setOpenModal(false);
-            }, 3000);
-            return () => {
-                clearTimeout(clearModal);
-            };
-        }
-    }, [openModal]);
+    const action = () => (
+        <>
+            <Link
+                className="text-lg hover:text-gray-editible font-semibold"
+                href={"/favorite"}
+            >
+                Перейти в избранное
+            </Link>
+        </>
+    );
 
     const onClickBtnEvent = () => {
         getLocalStorage("favorite");
-        setOpenModal(true);
+        if (!isItemInLocalStor) {
+            enqueueSnackbar("Товар добавлен в список избранного!", {
+                variant: "info",
+                className: "flex flex-col",
+                anchorOrigin: {
+                    vertical: "bottom",
+                    horizontal: "right",
+                },
+                action,
+            });
+        }
     };
     return (
         <>
@@ -35,7 +46,6 @@ export function AddInFavoriteBtn({
                 onClick={onClickBtnEvent}
                 iconFill={isItemInLocalStor}
             />
-            {openModal && isItemInLocalStor && <ModalEventText />}
         </>
     );
 }

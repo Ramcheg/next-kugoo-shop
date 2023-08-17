@@ -163,7 +163,7 @@ export function ProductCard({
     return (
         <motion.div
             layout
-            className="relative overflow-hidden border border-solid rounded-xl border-gray-editible flex flex-col justify-between"
+            className="relative border border-solid rounded-xl border-gray-editible flex flex-col justify-between overflow-hidden "
         >
             <div className="">
                 <Image
@@ -179,7 +179,10 @@ export function ProductCard({
                     className="text-center"
                     href={`/catalog/${typeTransportareEN}/${id}`}
                 >
-                    <H className=" text-center hover:text-lavander" level={4}>
+                    <H
+                        className=" text-center hover:text-lavander text-ellipsis w-full"
+                        level={4}
+                    >
                         {name}
                     </H>
                 </Link>

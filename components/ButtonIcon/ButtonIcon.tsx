@@ -7,6 +7,7 @@ import HeartIcon from "@/public/Heart.svg";
 import ShoppingIcon from "@/public/Shopping.svg";
 import CompareIcon from "@/public/Compare.svg";
 import { Fragment } from "react";
+import { Badge } from "@mui/material";
 
 const clazzIcon = "w-[1.25rem] h-[1.25rem]  2xl:w-[1.62rem] 2xl:h-[1.62rem]";
 const IconArr: IIconArr[] = [
@@ -24,6 +25,7 @@ export function ButtonIcon({
     iconFill,
     animateHover,
     children,
+    bandage = 0,
     ...props
 }: IButtonIcon): JSX.Element {
     const Icon = IconArr.map((item) => {
@@ -53,7 +55,9 @@ export function ButtonIcon({
             )}
             {...props}
         >
-            <div>{Icon ? Icon : ""}</div>
+            <Badge color="primary" badgeContent={bandage}>
+                <div>{Icon ? Icon : ""}</div>
+            </Badge>
             {children ? children : ""}
         </button>
     );

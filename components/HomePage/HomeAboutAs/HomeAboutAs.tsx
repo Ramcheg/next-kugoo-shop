@@ -26,14 +26,16 @@ export function HomeAboutAs(): JSX.Element {
                             <br /> самокатов лично
                         </div>
                     </div>
-                    <Button
-                        className="relative w-full text-left after:content-['-->'] after:absolute after:right-5"
-                        color="lavander"
-                        size="small"
-                        borderHoverOn="transparent"
-                    >
-                        Подробнее
-                    </Button>
+                    <Link href={"/contacts"}>
+                        <Button
+                            className="relative w-full text-left after:content-['-->'] after:absolute after:right-5"
+                            color="lavander"
+                            size="small"
+                            borderHoverOn="transparent"
+                        >
+                            Подробнее
+                        </Button>
+                    </Link>
                 </div>
             </div>
             <div className="w-full px-3 md:px-0 md:w-1/2">
@@ -70,7 +72,7 @@ export function HomeAboutAs(): JSX.Element {
                     </ul>
                     <Link
                         className="block mt-2 ml-[-14px] text-xs 2xl:text-sm font-medium text-lavander  hover:text-black-editible transition-all delay-100"
-                        href={"/"}
+                        href={"/shares"}
                     >
                         Смотреть сертификат
                     </Link>

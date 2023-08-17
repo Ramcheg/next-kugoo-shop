@@ -1,13 +1,14 @@
-import { SocialIconGroup, ButtonIcon } from "@/components";
+import { SocialIconGroup } from "@/components";
 
 import {
     HeaderFunctionalLinks,
     HeaderPhoneNumber,
     HeaderSearch,
     MobHeader,
-    HeaderBasketModal,
     HeaderMenu,
     HeaderBuscketBtn,
+    HeaderFavoriteBtn,
+    HeaderCompareBtn,
 } from "@/components/Header";
 import { HeaderOpenMenuBtn } from "@/components/Header/HeaderOpenMenuBtn/HeaderOpenMenuBtn";
 
@@ -34,16 +35,8 @@ export default function AppHeader(): JSX.Element {
                         <HeaderOpenMenuBtn />
                         <HeaderSearch />
                         <div className="flex gap-[0.5rem] items-center relative">
-                            <Link href={"/compare"}>
-                                <ButtonIcon icon="compare" colorIcon="black" />
-                            </Link>
-                            <Link href={"/favorites"}>
-                                <ButtonIcon
-                                    icon="heart"
-                                    iconFill={false}
-                                    colorIcon="black"
-                                />
-                            </Link>
+                            <HeaderCompareBtn />
+                            <HeaderFavoriteBtn />
                             <HeaderBuscketBtn />
                         </div>
                     </div>
