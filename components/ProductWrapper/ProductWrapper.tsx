@@ -10,9 +10,6 @@ import {
 } from "../HomePage/HomeProducts/homeProductSlice";
 import Loading from "@/app/loading";
 import { motion } from "framer-motion";
-import { localStorageNameType } from "@/interfaces/localStorageTypes";
-import { IBasketGoods } from "../Header/HeaderBasketModal/HeaderBasketModalProps";
-import { initLocalStorArr } from "../ProductCard/ProductCardSlice";
 
 export function ProductWrapper({
     products,
