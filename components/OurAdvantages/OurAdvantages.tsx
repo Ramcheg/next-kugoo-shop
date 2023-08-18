@@ -13,6 +13,7 @@ import {
     servicesShop,
 } from "./OurAdvantagesArr";
 import { useState } from "react";
+import { Variants, motion } from "framer-motion";
 
 export function OurAdvantages(): JSX.Element {
     const [firstSlide, setFirstSlide] = useState<boolean>(true);
@@ -77,6 +78,30 @@ export function OurAdvantages(): JSX.Element {
     );
     const servicesItems = RenderFullItems(servicesShop, advntServicesArr);
 
+    const variantShop: Variants = {
+        hidden: { x: -4000 },
+        visible: {
+            x: 0,
+            transition: {
+                type: "spring",
+                stiffness: 460,
+                damping: 50,
+            },
+        },
+    };
+
+    const variantServices: Variants = {
+        hidden: { x: 4000 },
+        visible: {
+            x: 0,
+            transition: {
+                type: "spring",
+                stiffness: 460,
+                damping: 50,
+            },
+        },
+    };
+
     return (
         <div>
             <div className="text-center">
@@ -110,10 +135,26 @@ export function OurAdvantages(): JSX.Element {
                     Сервисный центр
                 </Button>
             </div>
-            <div className="grid grid-cols-[minmax(auto-fit(0,230px))] md:grid-cols-3 md:grid-rows-2 grid-rows-3 gap-7 mt-7  md:mt-14 ">
-                {firstSlide ? internetShopItems : null}
-                {secontSlide ? servicesItems : null}
-            </div>
+            {firstSlide ? (
+                <motion.div
+                    variants={variantShop}
+                    animate={firstSlide ? "visible" : "hidden"}
+                    initial={"hidden"}
+                    className="grid grid-cols-[minmax(auto-fit(0,230px))] md:grid-cols-3 md:grid-rows-2 grid-rows-3 gap-7 mt-7  md:mt-14 "
+                >
+                    {internetShopItems}
+                </motion.div>
+            ) : null}
+            {secontSlide ? (
+                <motion.div
+                    variants={variantServices}
+                    initial={"hidden"}
+                    animate={secontSlide ? "visible" : "hidden"}
+                    className="grid grid-cols-[minmax(auto-fit(0,230px))] md:grid-cols-3 md:grid-rows-2 grid-rows-3 gap-7 mt-7  md:mt-14 "
+                >
+                    {servicesItems}
+                </motion.div>
+            ) : null}
         </div>
     );
 }
