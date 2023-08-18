@@ -47,7 +47,9 @@ export function Blog(): JSX.Element {
 
     return (
         <div className="relative">
-            <H level={2}>Новые статьи в блоге</H>
+            <H className="ml-[2vw]" level={2}>
+                Новые статьи в блоге
+            </H>
             <div ref={sliderRef} className="mt-5 md:mt-11 keen-slider">
                 <div className="keen-slider__slide ">
                     <a href="#">

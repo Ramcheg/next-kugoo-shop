@@ -94,7 +94,7 @@ export function HomeSlider(): JSX.Element {
     );
     return (
         <div className="relative">
-            <div className=" keen-slider containerBig" ref={ref}>
+            <div className=" keen-slider containerBig mt-8" ref={ref}>
                 {slideArr.map((item, i) => {
                     return (
                         <div
