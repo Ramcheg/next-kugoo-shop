@@ -93,8 +93,11 @@ export function HomeSlider(): JSX.Element {
         </div>
     );
     return (
-        <div className="relative">
-            <div className=" keen-slider containerBig mt-8" ref={ref}>
+        <div className="relative ">
+            <div
+                className=" keen-slider containerBig mt-8 max-h-[26rem] 2xl:max-h-[28rem]"
+                ref={ref}
+            >
                 {slideArr.map((item, i) => {
                     return (
                         <div
@@ -160,7 +163,7 @@ export function HomeSlider(): JSX.Element {
                     );
                 })}
             </div>
-            <div className="absolute bottom-12 left-28 hidden md:flex items-center gap-3 z-10">
+            <div className="absolute bottom-6 left-28 hidden md:flex items-center gap-3 z-10">
                 {createArrowLeft}
                 <div className="text-white text-base 2xl:text-xl ">
                     {currentSlide}
