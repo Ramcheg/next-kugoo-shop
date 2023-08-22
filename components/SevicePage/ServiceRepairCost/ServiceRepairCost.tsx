@@ -1,21 +1,62 @@
 "use client";
 
 import { Button, H } from "@/components";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import {
-    ServiceRepairfakeDescr,
     serviceRepairButtonGroup,
-    serviceRepairNameProduct,
+    serviceRepairElecticScooter,
+    serviceRepairElecticWashCleener,
+    serviceRepairElectricBike,
+    serviceRepairElectricCamocat,
 } from "./ServiceRepairCostArr";
+import { ServiceRepairNameItem } from "./ServiceRepairNameItem";
+import { ServiceRepairCostDescrItem } from "./ServiceRepairCostDescrItem";
 import classNames from "classnames";
+import { IServiceRepairCost } from "./ServiceRepairCostTypes";
 
 export const ServiceRepairCost: FC = () => {
     const [activeName, setActiveName] = useState("KirinM4");
+    const [activeType, setActiveType] = useState("electricCamocat");
+    const [itemDescr, setItemDescr] = useState<IServiceRepairCost[]>([]);
+
+    useEffect(() => {
+        switch (activeType) {
+            case "electricCamocat":
+                setItemDescr(serviceRepairElectricCamocat);
+                break;
+            case "electricBike":
+                setItemDescr(serviceRepairElectricBike);
+                break;
+            case "electicWashCleener":
+                setItemDescr(serviceRepairElecticWashCleener);
+                break;
+
+            case "electicScooter":
+                setItemDescr(serviceRepairElecticScooter);
+                break;
+
+            default:
+                setItemDescr([]);
+                break;
+        }
+
+        if (itemDescr.length > 0) {
+            setActiveName(itemDescr[0].id);
+        }
+    }, [activeType, itemDescr]);
+
+    const onChangeType = (id: string) => {
+        setActiveType(id);
+    };
+
+    const onChangeActiveName = (id: string) => {
+        setActiveName(id);
+    };
 
     return (
         <div className="container mx-auto">
             <H className="text-center" level={2}>
-                Стоимость ремонта{" "}
+                Стоимость ремонта
             </H>
             <div className="mx-auto text-center w-full md:w-1/2">
                 Точную стоимость работ вам озвучит специалист сервисного центра
@@ -26,10 +67,16 @@ export const ServiceRepairCost: FC = () => {
                 {serviceRepairButtonGroup.map(({ id, name }) => {
                     return (
                         <Button
-                            className="border-transparent"
+                            className={`${
+                                activeType === id ? "" : "border-transparent"
+                            }`}
                             key={id}
                             size="small"
-                            color="gray"
+                            color={activeType === id ? "white" : "gray"}
+                            withBorder={activeType === id}
+                            isDisabled={activeType === id}
+                            isHover={activeType !== id}
+                            onClick={() => onChangeType(id)}
                         >
                             {name}
                         </Button>
@@ -39,51 +86,26 @@ export const ServiceRepairCost: FC = () => {
             <div className="mt-10 md:mt-24">
                 <div className="flex justify-between h-[27rem] gap-7">
                     <div className="w-1/4 bg-gray-light py-4 rounded-lg">
-                        {serviceRepairNameProduct.map(({ id, name }) => {
+                        {itemDescr.map((item) => {
                             return (
-                                <div
-                                    key={id}
-                                    className={classNames(
-                                        "transition-all delay-100 hover:bg-white hover:border-l-2 hover:border-solid border-l-2 border-solid  hover:border-lavander font-medium hover:text-lavander text-lg  2xl:text-xl pl-7 py-2",
-                                        {
-                                            ["bg-white border-l-2 border-solid border-lavander text-lavander select-none"]:
-                                                activeName === id,
-                                            ["border-transparent  cursor-pointer"]:
-                                                activeName !== id,
-                                        }
-                                    )}
-                                >
-                                    {name}
-                                </div>
+                                <ServiceRepairNameItem
+                                    key={item.id}
+                                    activeName={activeName}
+                                    {...item}
+                                    changeActiveDescr={onChangeActiveName}
+                                />
                             );
                         })}
                     </div>
                     <div className="w-3/4 border-2 border-solid border-gray-light rounded-lg">
-                        {ServiceRepairfakeDescr.map(({ id, content }) => {
+                        {itemDescr.map(({ id, content }) => {
                             return (
-                                <div
-                                    key={id}
-                                    className={classNames({
-                                        ["block"]: activeName === id,
-                                        ["hidden"]: activeName !== id,
-                                    })}
-                                >
-                                    {content.map((item, i) => {
-                                        return (
-                                            <div
-                                                key={i}
-                                                className="flex justify-between items-center px-6 py-5 border-b-2 border-solid border-gray-light"
-                                            >
-                                                <div>
-                                                    Замена/установка контроллера
-                                                </div>
-                                                <div className="font-medium">
-                                                    от 1500 грн
-                                                </div>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
+                                <ServiceRepairCostDescrItem
+                                    key={`${id}-descr`}
+                                    id={id}
+                                    activeName={activeName}
+                                    content={content}
+                                />
                             );
                         })}
                     </div>
