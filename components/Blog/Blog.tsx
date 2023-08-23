@@ -76,12 +76,12 @@ export function Blog(): JSX.Element {
                         <BlogItem />
                     </a>
                 </div>
-                <div className="keen-slider__slide max-w-[240px]">
+                <div className="keen-slider__slide">
                     <a href="#">
                         <BlogItem />
                     </a>
                 </div>
-                <div className="keen-slider__slide max-w-[240px]">
+                <div className="keen-slider__slide">
                     <a href="#">
                         <BlogItem />
                     </a>

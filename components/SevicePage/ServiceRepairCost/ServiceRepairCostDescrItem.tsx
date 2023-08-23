@@ -22,9 +22,9 @@ export const ServiceRepairCostDescrItem: FC<IServiceRepairCostDescrItem> = ({
                 return (
                     <div
                         key={i}
-                        className="flex justify-between items-center px-6 py-5 border-b-2 border-solid border-gray-light"
+                        className="transition-all delay-100 flex justify-between items-center px-2  md:px-6 py-5 border-b-2 border-solid border-gray-light text-xs md:text-base"
                     >
-                        <div>Замена/установка контроллера</div>
+                        <div>Замена/установка контроллера {id} </div>
                         <div className="font-medium">от 1500 грн</div>
                     </div>
                 );

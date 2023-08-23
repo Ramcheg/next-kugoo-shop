@@ -1,0 +1,62 @@
+.telegramSocialIcon {
+    transition: all 100ms;
+
+    svg {
+        path {
+            fill: #008DE0;
+        }
+
+
+    }
+
+    &:hover {
+        svg {
+            path {
+                fill: white;
+            }
+        }
+    }
+
+}
+
+.phoneSocialIcon {
+    transition: all 100ms;
+
+    svg {
+        path {
+            fill: var(--lavander);
+        }
+
+
+    }
+
+    &:hover {
+        svg {
+            path {
+                fill: white;
+            }
+        }
+    }
+
+}
+
+.whatsappSocialIcon {
+    transition: all 100ms;
+
+    svg {
+        path {
+            fill: #75D14A;
+        }
+
+
+    }
+
+    &:hover {
+        svg {
+            path {
+                fill: white;
+            }
+        }
+    }
+
+}

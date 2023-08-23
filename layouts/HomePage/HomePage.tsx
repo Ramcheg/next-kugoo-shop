@@ -54,7 +54,7 @@ export default function HomePage(): JSX.Element {
             <div className="containerBig rounded-lg overflow-hidden h-[320px] md:h-[630px] mt-10 md:mt-24">
                 {/* <BigVideo /> */}
             </div>
-            <div className="max-w-[100vw] mt-8 md:mt-20">
+            <div className="max-w-[98vw] mt-8 md:mt-20 overflow-hidden">
                 <section>
                     <Blog />
                 </section>

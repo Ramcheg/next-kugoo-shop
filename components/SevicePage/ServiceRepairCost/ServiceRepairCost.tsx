@@ -13,6 +13,7 @@ import { ServiceRepairNameItem } from "./ServiceRepairNameItem";
 import { ServiceRepairCostDescrItem } from "./ServiceRepairCostDescrItem";
 import classNames from "classnames";
 import { IServiceRepairCost } from "./ServiceRepairCostTypes";
+import { motion } from "framer-motion";
 
 export const ServiceRepairCost: FC = () => {
     const [activeName, setActiveName] = useState("KirinM4");

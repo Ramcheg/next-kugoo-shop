@@ -8,6 +8,7 @@ import womanWithElecticImg from "@/public/ServicePage/woman-with-electric.png";
 import {
     ServiceBanner,
     ServiceDiagnostic,
+    ServiceFindReason,
     ServiceRepairCost,
 } from "@/components/SevicePage";
 
@@ -20,6 +21,9 @@ export default function ServicePage(): JSX.Element {
             </section>
             <section className=" mt-14 md:mt-24 ">
                 <ServiceRepairCost />
+            </section>
+            <section className=" mt-14 md:mt-24">
+                <ServiceFindReason />
             </section>
         </>
     );
