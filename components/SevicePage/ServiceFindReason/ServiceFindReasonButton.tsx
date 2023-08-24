@@ -18,7 +18,10 @@ export const ServiceFindReasonButton: FC = () => {
                 Записаться на диагностику
             </Button>
             {openModal ? (
-                <ServiceFindReasonModal isOpenModal={openModal} />
+                <ServiceFindReasonModal
+                    onOpenModal={onOpenModal}
+                    isOpenModal={openModal}
+                />
             ) : null}
         </>
     );

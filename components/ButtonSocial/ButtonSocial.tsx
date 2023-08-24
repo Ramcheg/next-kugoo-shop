@@ -37,9 +37,9 @@ export function ButtonSocial({
     });
     const link =
         typeIcon === "telegram"
-            ? "tel:+3802232314"
+            ? "https://web.telegram.org/k/"
             : typeIcon === "phone"
-            ? "https://www.viber.com"
+            ? "tel:+3802232314"
             : "https://www.whatsapp.com";
     return (
         <Link href={link}>

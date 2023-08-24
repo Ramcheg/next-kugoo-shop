@@ -10,8 +10,8 @@ import { ServiceFindReasonButton } from "./ServiceFindReasonButton";
 export const ServiceFindReason: FC = () => {
     return (
         <div className="bg-[#539DFF] py-7 md:py-16">
-            <div className="container mx-auto flex justify-between">
-                <div className="relative">
+            <div className="container mx-auto flex justify-center md:justify-between">
+                <div className="relative hidden md:block">
                     <Image src={zoomImg} alt="zoomScreen" />
                     <Image
                         className="absolute -right-3 -top-3"
@@ -19,7 +19,7 @@ export const ServiceFindReason: FC = () => {
                         alt="zoomIcon"
                     />
                 </div>
-                <div className="w-1/2">
+                <div className=" w-[90%] md:w-1/2">
                     <FakeButton
                         bgColor="green"
                         textColor="white"
