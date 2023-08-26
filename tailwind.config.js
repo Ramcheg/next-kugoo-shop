@@ -26,6 +26,7 @@ module.exports = {
       },
       listStyleImage: {
         triangle: 'url("../public/triangle.png")',
+        tic: 'url("../public/ServicePage/tic.svg")'
       },
     },
   },
