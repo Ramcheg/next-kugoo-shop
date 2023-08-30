@@ -47,7 +47,7 @@ export function ModalWrapperCenter({
         >
             <motion.div
                 variants={variantChildren}
-                className="relative  z-50  bg-white rounded-md w-full md:w-1/2  mt-10 md:mt-0"
+                className="relative  z-50  bg-white rounded-md w-full md:w-2/3 xl:w-1/2  mt-10 md:mt-0"
             >
                 {children}
             </motion.div>

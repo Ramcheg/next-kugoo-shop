@@ -23,7 +23,7 @@ export const ServicePriceListItems: FC<ServicePriceListItems> = ({
         return arr.map(({ id, name, price }) => {
             return (
                 <div
-                    className="flex justify-between border-b-2 border-solid border-gray-light py-4"
+                    className="flex justify-between border-b-2 border-solid border-gray-light py-4 text-xs md:text-base"
                     key={id}
                 >
                     <div>{name}</div>
@@ -41,7 +41,7 @@ export const ServicePriceListItems: FC<ServicePriceListItems> = ({
         const secondRender = renderItem(secondList);
 
         return (
-            <div className="flex justify-between flex-wrap mt-6 md:mt-14">
+            <div className="flex justify-between flex-wrap mt-6 md:mt-14 mx-2 md:mx-0">
                 <div className="w-5/12">{fistRender}</div>
                 <div className="w-5/12">{secondRender}</div>
             </div>
@@ -61,7 +61,10 @@ export const ServicePriceListItems: FC<ServicePriceListItems> = ({
         >
             {render()}
             <div className="flex justify-center mt-5 md:mt-10">
-                <ServicePriceListItemsBtn type={type} />
+                <ServicePriceListItemsBtn
+                    ArrListItems={ArrListItems}
+                    type={type}
+                />
             </div>
         </motion.div>
     );

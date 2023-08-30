@@ -21,9 +21,9 @@ export function usePostModalNumber(
     useEffect(() => {
         if (success) {
             const closeTime = setTimeout(() => {
-                setSucces(false);
                 onOpenModal();
                 setNumberPhone("");
+                setSucces(false);
             }, 3000);
 
             return () => {
