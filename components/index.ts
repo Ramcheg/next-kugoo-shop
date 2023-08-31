@@ -28,3 +28,5 @@ export * from "./AddInBusketBtn/AddInBusketBtn";
 export * from "./AddInFavoriteBtn/AddInFavoriteBtn";
 export * from "./AddInCompareBtn/AddInCompareBtn";
 export * from "./PreOrderForOneClick/PreOrderForOneClick";
+export * from "./ShopTeam/ShopTeam";
+export * from "./Gallery/Gallery";

@@ -9,9 +9,11 @@ import {
     ServiceBanner,
     ServiceDiagnostic,
     ServiceFindReason,
+    ServiceGallery,
     ServiceHidro,
     ServicePriceList,
     ServiceRepairCost,
+    ServiceTeam,
 } from "@/components/SevicePage";
 
 export default function ServicePage(): JSX.Element {
@@ -32,6 +34,12 @@ export default function ServicePage(): JSX.Element {
             </section>
             <section className="mt-6 md:mt-16">
                 <ServicePriceList />
+            </section>
+            <section className="mt-14 md:mt-24">
+                <ServiceTeam />
+            </section>
+            <section className="mt-14 md:mt-24">
+                <ServiceGallery />
             </section>
         </>
     );
