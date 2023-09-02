@@ -3,6 +3,10 @@ import Image from "next/image";
 import { FC } from "react";
 
 import mechanicKeyImg from "@/public/ServicePage/mechanicKey.png";
+import {
+    serviceGallaryData,
+    serviceGallaryMiniData,
+} from "@/components/Gallery/GallaryData";
 
 export const ServiceGallery: FC = () => {
     return (
@@ -37,7 +41,10 @@ export const ServiceGallery: FC = () => {
                 </div>
             </div>
             <div className="containerBig">
-                <Gallery />
+                <Gallery
+                    imgBigData={serviceGallaryData}
+                    imgData={serviceGallaryMiniData}
+                />
             </div>
         </div>
     );

@@ -3,30 +3,46 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { FC, useState } from "react";
 
-import gallary1 from "@/public/ServicePage/ServiceGallary/gallary1.png";
-import gallarybig from "@/public/ServicePage/ServiceGallary/gallaryBig.jpg";
-import Image, { StaticImageData } from "next/image";
-const frr: { name: StaticImageData; id: string }[] = [
-    { name: gallary1, id: "efirtfwf" },
-    { name: gallary1, id: "efirt4fwf" },
-    { name: gallary1, id: "efir6tfwf" },
-    { name: gallary1, id: "efir7tfwf" },
-];
+import Image from "next/image";
+import { IGallaryData } from "./GallaryData";
+import CloseIcon from "@mui/icons-material/Close";
+interface IGallaryProps {
+    imgData: IGallaryData[];
+    imgBigData: IGallaryData[];
+}
 
-export const Gallery: FC = () => {
+export const Gallery: FC<IGallaryProps> = ({ imgBigData, imgData }) => {
     const [selectedId, setSelectedId] = useState("");
+    const [countBigImg, setCountBigImg] = useState(0);
 
     return (
         <>
-            {frr.map((item) => (
-                <motion.div
-                    key={item.id}
-                    layoutId={item.id}
-                    onClick={() => setSelectedId(item.id)}
-                >
-                    <Image src={item.name} alt="wrerer" />
-                </motion.div>
-            ))}
+            <div className="container mx-auto">
+                <div className="flex justify-center gap-3 flex-wrap">
+                    {imgData.map((item, i) => (
+                        <motion.div key={item.id} layoutId={item.id}>
+                            <div className="relative mx-auto sm:w-full w-[70%] sm:h-full h-[70%] group">
+                                <Image
+                                    className=" rounded-lg relative z-10"
+                                    src={item.name}
+                                    alt="wrerer"
+                                />
+                                <div
+                                    className="transition-all delay-100 rounded-full opacity-0 group-hover:opacity-100 bg-white/20 backdrop-blur-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 py-12 px-6 cursor-pointer"
+                                    onClick={() => {
+                                        setSelectedId(item.id),
+                                            setCountBigImg(i);
+                                    }}
+                                >
+                                    <div className="font-medium text-white ">
+                                        Смотреть
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
 
             <AnimatePresence>
                 {selectedId && (
@@ -34,16 +50,32 @@ export const Gallery: FC = () => {
                         layoutId={selectedId}
                         className="fixed top-0 left-0 bg-white/25 w-full h-screen z-50"
                     >
-                        <div className="relative flex justify-center items-center  w-full h-full">
-                            <Image
-                                src={gallarybig}
-                                alt="554"
-                                className="w-[44rem] h-[44rem]"
-                            />
-                            <motion.button onClick={() => setSelectedId("")}>
-                                Click me
-                            </motion.button>
-                        </div>
+                        <motion.div className="relative flex justify-center items-center  w-full h-full">
+                            <motion.div className="relative">
+                                <Image
+                                    loading="lazy"
+                                    src={imgBigData[countBigImg].name}
+                                    alt={imgBigData[countBigImg].id}
+                                    className="mx-auto w-[90%] sm:w-[35rem] md:w-[44rem] h-[90%] sm:h-[35rem] md:h-[44rem] rounded-lg"
+                                />
+                                <motion.button
+                                    className="absolute top-4 right-8 sm:right-4"
+                                    onClick={() => {
+                                        setSelectedId(""), setCountBigImg(0);
+                                    }}
+                                >
+                                    <CloseIcon
+                                        fontSize="medium"
+                                        sx={{
+                                            fill: "#fff",
+                                            "&:hover": {
+                                                fill: "CornflowerBlue",
+                                            },
+                                        }}
+                                    />
+                                </motion.button>
+                            </motion.div>
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
