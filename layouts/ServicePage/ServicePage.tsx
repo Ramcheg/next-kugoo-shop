@@ -1,4 +1,4 @@
-import { Button, H } from "@/components";
+import { Button, H, QuestionsAndAnswer } from "@/components";
 import Image from "next/image";
 import RoomIcon from "@mui/icons-material/Room";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
@@ -6,6 +6,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 
 import womanWithElecticImg from "@/public/ServicePage/woman-with-electric.png";
 import {
+    ServiceAdress,
     ServiceBanner,
     ServiceDiagnostic,
     ServiceFindReason,
@@ -15,6 +16,7 @@ import {
     ServiceRepairCost,
     ServiceTeam,
 } from "@/components/SevicePage";
+import { QaAService } from "@/components/QuestionsAndAnswer/QuestionsAndAnswerArr";
 
 export default function ServicePage(): JSX.Element {
     return (
@@ -40,6 +42,12 @@ export default function ServicePage(): JSX.Element {
             </section>
             <section className="mt-14 md:mt-24">
                 <ServiceGallery />
+            </section>
+            <section className="mt-14 md:mt-24">
+                <QuestionsAndAnswer arrayQaA={QaAService} />
+            </section>
+            <section className="mt-14 md:mt-24 containerBig">
+                <ServiceAdress />
             </section>
         </>
     );

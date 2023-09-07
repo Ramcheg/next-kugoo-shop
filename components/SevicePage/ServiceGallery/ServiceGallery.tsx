@@ -40,7 +40,7 @@ export const ServiceGallery: FC = () => {
                     </div>
                 </div>
             </div>
-            <div className="containerBig">
+            <div className="containerBig mt-4">
                 <Gallery
                     imgBigData={serviceGallaryData}
                     imgData={serviceGallaryMiniData}

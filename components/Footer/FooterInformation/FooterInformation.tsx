@@ -14,7 +14,7 @@ const FotermInformationArr: IFooterInformation[] = [
         timeWork: "Пн-Вс 10:00 - 20:00",
     },
     {
-        name: "Магазин в Днепре ул. Ткацкая, 5 стр. 16",
+        name: "Магазин в Днепре ул. Ткацкая,5",
         numberPhone: "+38 (095) 406 15 87",
     },
     {

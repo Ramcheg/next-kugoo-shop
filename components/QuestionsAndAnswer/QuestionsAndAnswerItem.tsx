@@ -27,7 +27,7 @@ export const QuestionsAndAnswerItem = forwardRef(
                         className="flex justify-between gap-6 animQ"
                         onClick={onOpenDescription}
                     >
-                        <div className="group cursor-pointer text-base 2xl:text-lg font-medium hover:text-lavander transition-all delay-100">
+                        <div className="group cursor-pointer text-base 2xl:text-lg font-medium hover:text-lavander transition-all delay-100 text-left">
                             {titleHead}
                         </div>
 

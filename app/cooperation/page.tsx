@@ -1,3 +1,5 @@
+import { CooperationPage } from "@/layouts/CooperationPage/CooperationPage";
+
 export default function Cooperation(): JSX.Element {
-    return <h1>This is cooperation page</h1>;
+    return <CooperationPage />;
 }

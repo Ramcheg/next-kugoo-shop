@@ -6,3 +6,4 @@ export * from "./ServiceHidro/ServiceHidro";
 export * from "./ServicePriceList/ServicePriceList";
 export * from "./ServiceTeam/ServiceTeam";
 export * from "./ServiceGallery/ServiceGallery";
+export * from "./ServiceAdress/ServiceAdress";
