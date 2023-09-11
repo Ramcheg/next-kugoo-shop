@@ -11,4 +11,5 @@ export interface IInputProps
     placeholderInput?: string;
     isRequired?: boolean;
     nameInput: string;
+    colorChackbox?: "white" | "default";
 }
