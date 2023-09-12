@@ -36,7 +36,7 @@ export const CooperationBanner: FC = () => {
         <div className="containerBig bg-gray-light rounded-lg">
             <div className="container mx-auto">
                 <div className="flex items-center py-10 gap-6 md:gap-20 md:flex-row flex-col">
-                    <div className="w-full md:w-1/2 py-5 pl-3">
+                    <div className="w-full md:w-2/3 py-5 pl-3">
                         <H level={1}>
                             Покупайте товары Kugoo по оптовым ценам от
                             официального дилера
@@ -65,7 +65,7 @@ export const CooperationBanner: FC = () => {
                     </div>
                     <div className="bg-lavander rounded-lg max-w-[25rem] py-5">
                         <div className="w-2/3 text-center text-white mx-auto ">
-                            <div className="text-lg 2xl:text-xl font-semibold">
+                            <div className="text-lg 2xl:text-xl font-semibold uppercase">
                                 Получите прайс-лист с оптовыми ценами
                             </div>
                             <div className="text-sm mt-2">
