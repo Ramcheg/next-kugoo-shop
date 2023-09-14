@@ -5,7 +5,7 @@ import { CooperationOfferSlide } from "./CooperationOfferSlide";
 export const CooperationOffer: FC = () => {
     return (
         <div className="container mx-auto">
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center sm:flex-row flex-col  gap-4 sm:gap-0">
                 <H level={3} className="w-1/2">
                     Выбирайте популярные товары без наценок посредников
                 </H>
@@ -53,7 +53,7 @@ export const CooperationOffer: FC = () => {
                             на рынке за счет контролируемой МРЦ
                         </li>
                     </ul>
-                    <div className="flex gap-5 mt-10">
+                    <div className="flex gap-5 mt-10 flex-wrap justify-center">
                         <div className="bg-gray-light rounded-lg w-[13rem] p-4 text-center">
                             <div className="text-lavander text-xs 2xl:text-base">
                                 До{" "}

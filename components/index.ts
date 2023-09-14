@@ -30,3 +30,5 @@ export * from "./AddInCompareBtn/AddInCompareBtn";
 export * from "./PreOrderForOneClick/PreOrderForOneClick";
 export * from "./ShopTeam/ShopTeam";
 export * from "./Gallery/Gallery";
+export * from "./PriceForm/PriceForm";
+export * from "./OurSocial/OurSocial";

@@ -21,17 +21,17 @@ export const CooperationAlgorytm: FC = () => {
                     За 4 года разработали удобную схему дропшипинга
                 </p>
             </div>
-            <div className="flex justify-center gap-40 mt-12">
+            <div className="flex justify-center gap-20 lg:gap-40 mt-12">
                 {firstCooperationAlgData.map(({ icon, id, name }, i) => (
-                    <div key={id}>
-                        <div className="rounded-full w-[50px] h-[50px] bg-gray-light relative">
+                    <div className="w-28" key={id}>
+                        <div className="rounded-full p-8 bg-gray-light relative">
                             <Image className="" src={icon} alt={id} />
                             <ArrowRightAltIcon
                                 color="primary"
                                 className={
                                     i === fakeArr.length - 1
-                                        ? "absolute left-1/2 -translate-x-1/2 -bottom-28 rotate-90"
-                                        : "absolute top-1/2 -translate-y-1/2 -right-24"
+                                        ? "absolute left-1/2 -translate-x-1/2 -bottom-32 rotate-90"
+                                        : "absolute top-1/2 -translate-y-1/2 -right-16 lg:-right-24"
                                 }
                                 sx={{ fontSize: "3rem" }}
                             />
@@ -42,17 +42,17 @@ export const CooperationAlgorytm: FC = () => {
                     </div>
                 ))}
             </div>
-            <div className="flex justify-center gap-40 mt-28">
+            <div className="flex justify-center gap-20 lg:gap-40 mt-28 ">
                 {secondCooperationAlgData.map(({ icon, id, name }, i) => (
-                    <div key={id}>
-                        <div className="rounded-full px-6 py-6 bg-gray-light relative">
+                    <div key={id} className="w-28">
+                        <div className="rounded-full  p-8 bg-gray-light relative w-28">
                             <Image src={icon} alt={id} />
                             <ArrowRightAltIcon
                                 color="primary"
                                 className={
                                     i === fakeArr.length - 1
                                         ? "hidden absolute"
-                                        : "absolute top-1/2 -translate-y-1/2 -right-24 -rotate-180"
+                                        : "absolute top-1/2 -translate-y-1/2 -right-16 lg:-right-24 -rotate-180"
                                 }
                                 sx={{
                                     fontSize:

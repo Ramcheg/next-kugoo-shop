@@ -23,7 +23,7 @@ export const CooperationOfferSlide: FC = () => {
     });
     return (
         <div className="relative">
-            <div className="w-[28rem] h-[20rem]">
+            <div className="w-[20rem] sm:w-[28rem] h-[20rem]">
                 <div ref={sliderRef} className="keen-slider">
                     <div className="keen-slider__slide">
                         <Image src={sertificatImg} alt="sertificat" />
