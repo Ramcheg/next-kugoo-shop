@@ -1,10 +1,13 @@
+import { QuestionsAndAnswer } from "@/components";
 import {
     CooperationAlgorytm,
     CooperationBanner,
     CooperationComplitedPlan,
+    CooperationIndividual,
     CooperationOffer,
     CooperationSocial,
 } from "@/components/CooperationPage";
+import { QaAHome } from "@/components/QuestionsAndAnswer/QuestionsAndAnswerArr";
 import { FC } from "react";
 
 export const CooperationPage: FC = () => {
@@ -24,6 +27,12 @@ export const CooperationPage: FC = () => {
             </section>
             <section className="mt-4 md:mt-8">
                 <CooperationSocial />
+            </section>
+            <section className="mt-12 md:mt-24">
+                <QuestionsAndAnswer arrayQaA={QaAHome} />
+            </section>
+            <section className="mt-12 md:mt-24">
+                <CooperationIndividual />
             </section>
         </>
     );
