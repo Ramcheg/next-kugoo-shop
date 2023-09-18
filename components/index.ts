@@ -32,3 +32,4 @@ export * from "./ShopTeam/ShopTeam";
 export * from "./Gallery/Gallery";
 export * from "./PriceForm/PriceForm";
 export * from "./OurSocial/OurSocial";
+export * from "./Breadcrumb/Breadcrumb";

@@ -1,6 +1,10 @@
 "use client";
 import { IHeaderMenuLinks } from "./HeaderMenuProps";
-import { useSelectedLayoutSegment } from "next/navigation";
+import {
+    useSelectedLayoutSegment,
+    useSelectedLayoutSegments,
+    usePathname,
+} from "next/navigation";
 import { useEffect } from "react";
 import classNames from "classnames";
 import Link from "next/link";
