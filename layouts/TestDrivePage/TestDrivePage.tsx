@@ -1,5 +1,9 @@
 import { Breadcrumb } from "@/components";
-import { TestDriveBanner } from "@/components/TestDrivePage";
+import { TestDriveBanner, TestDriveContent } from "@/components/TestDrivePage";
+import {
+    learningYouData,
+    scooterModelData,
+} from "@/components/TestDrivePage/TestDriveContent/TestDriveContentData";
 import { FC } from "react";
 
 export const TestDrivePage: FC = () => {
@@ -11,6 +15,20 @@ export const TestDrivePage: FC = () => {
 
             <section className="mt-5">
                 <TestDriveBanner />
+            </section>
+            <section className="mt-5 md:mt-10">
+                <div>
+                    <TestDriveContent
+                        data={scooterModelData}
+                        imgPosition="left"
+                    />
+                </div>
+                <div className="mt-5 md:mt-14">
+                    <TestDriveContent
+                        data={learningYouData}
+                        imgPosition="right"
+                    />
+                </div>
             </section>
         </>
     );

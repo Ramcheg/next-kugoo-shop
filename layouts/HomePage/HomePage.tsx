@@ -16,6 +16,7 @@ import {
     HomeAboutAs,
 } from "@/components/HomePage";
 import { QaAHome } from "@/components/QuestionsAndAnswer/QuestionsAndAnswerArr";
+import { TestDriveBanner } from "@/components/TestDrivePage";
 
 export default function HomePage(): JSX.Element {
     return (
