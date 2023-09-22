@@ -2,25 +2,15 @@
 import { useSelectedLayoutSegment, usePathname } from "next/navigation";
 import { Breadcrumbs, Typography } from "@mui/material";
 import Link from "next/link";
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import HomeIcon from "@mui/icons-material/Home";
 
 import {} from "next/router";
-import { ruLink } from "./translateLink";
+import { translateForRuLink } from "@/helpers/translateLinkToRu";
 export const Breadcrumb: FC = () => {
     const pathArr = usePathname()
         .split("/")
         .filter((path, index) => index === 0 || path[0] !== "");
-    const translateForRuLink = (
-        enLink: string
-    ):
-        | {
-              enLink: string;
-              translate: string;
-          }
-        | undefined => {
-        return ruLink.find((item) => item.enLink === enLink);
-    };
 
     return (
         <div>

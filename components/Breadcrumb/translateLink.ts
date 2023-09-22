@@ -6,4 +6,5 @@ export const ruLink: { enLink: string; translate: string }[] = [
     { enLink: "contacts", translate: "Контакты" },
     { enLink: "shares", translate: "Акции" },
     { enLink: "catalog", translate: "Каталог" },
+    { enLink: "electricBike", translate: "Электровелосипеды" },
 ];
