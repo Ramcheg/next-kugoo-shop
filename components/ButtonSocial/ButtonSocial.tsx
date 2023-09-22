@@ -1,3 +1,5 @@
+"use client";
+
 import { IButtonSocialIcon, IIconArr } from "./ButtonSocialProps";
 import cn from "classnames";
 

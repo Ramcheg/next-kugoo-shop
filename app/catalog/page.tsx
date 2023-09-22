@@ -1,3 +1,5 @@
+import { CatalogPage } from "@/layouts/CatalogPage/CatalogPage";
+
 export default function Catalog(): JSX.Element {
-    return <h1>This is catalog</h1>;
+    return <CatalogPage />;
 }

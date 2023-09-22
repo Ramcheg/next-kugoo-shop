@@ -23,7 +23,8 @@ module.exports = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'testDriveBanner': 'url("../public/testDrivePage/young-woman-riding-electric-scooter.png")'
+        'driveBanner': 'url("../public/testDrivePage/young-woman-riding-electric-scooter.png")',
+        'catalogBanner': 'url("../public/bannerCatalog.png")'
       },
       listStyleImage: {
         triangle: 'url("../public/triangle.png")',

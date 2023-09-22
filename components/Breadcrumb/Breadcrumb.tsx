@@ -49,6 +49,7 @@ export const Breadcrumb: FC = () => {
                                     display: "flex",
                                     alignItems: "center",
                                     fontWeight: "500",
+                                    userSelect: "none",
                                 }}
                                 color="primary"
                             >

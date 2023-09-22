@@ -5,4 +5,5 @@ export const ruLink: { enLink: string; translate: string }[] = [
     { enLink: "blog", translate: "Блог" },
     { enLink: "contacts", translate: "Контакты" },
     { enLink: "shares", translate: "Акции" },
+    { enLink: "catalog", translate: "Каталог" },
 ];

@@ -3,22 +3,26 @@
 import { Button } from "@/components";
 import { FC, useState } from "react";
 import { TextDriveModal } from "../TextDriveModal/TextDriveModal";
-import { usePostModalNumber } from "@/hooks/usePostModalNumber";
 
 export const TestDriveBannerBtn: FC = () => {
-    const [click, setClick] = useState(false);
-    const {} = usePostModalNumber();
+    const [openMenu, SetOpenMenu] = useState(true);
+
+    const onChangeMenu = () => {
+        SetOpenMenu((openMenu) => !openMenu);
+    };
     return (
         <>
             <Button
                 className="text-lavander mt-10"
                 color="white"
                 size="small"
-                onClick={() => setClick(true)}
+                onClick={() => SetOpenMenu(true)}
             >
                 Записаться
             </Button>
-            <TextDriveModal isOpen={click} />
+            {openMenu && (
+                <TextDriveModal onChangeMenu={onChangeMenu} isOpen={openMenu} />
+            )}
         </>
     );
 };

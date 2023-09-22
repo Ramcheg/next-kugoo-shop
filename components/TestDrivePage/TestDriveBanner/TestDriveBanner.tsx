@@ -1,5 +1,4 @@
-import { Button, H } from "@/components";
-import Image from "next/image";
+import { H } from "@/components";
 import { FC } from "react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PedalBikeIcon from "@mui/icons-material/PedalBike";
@@ -7,7 +6,7 @@ import BoltIcon from "@mui/icons-material/Bolt";
 import { TestDriveBannerBtn } from "./TestDriveBannerBtn";
 export const TestDriveBanner: FC = () => {
     return (
-        <div className=" relative containerBig h-[26rem] 2xl:h-[30rem] bg-testDriveBanner bg-cover bg-right flex items-center rounded-lg overflow-hidden">
+        <div className=" relative containerBig h-[26rem] 2xl:h-[30rem] bg-driveBanner bg-cover bg-right flex items-center rounded-lg overflow-hidden">
             <div className="container mx-auto relative z-20 ">
                 <div className="text-white w-full md:w-1/2">
                     <div className="text-xs">
