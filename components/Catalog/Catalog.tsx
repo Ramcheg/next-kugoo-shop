@@ -1,11 +1,12 @@
 import { ICatalogArr } from "./CatalogTypes";
 import Image from "next/image";
+import formatCurrency from "@/helpers/formatCurrency";
+import Link from "next/link";
 
 import roboCleanerImg from "@/public/catalog/whiteRobotVacuumCleaner.png";
 import bikeImg from "@/public/catalog/cyclingBike.png";
 import scalesImg from "@/public/catalog/visi.png";
-import formatCurrency from "@/helpers/formatCurrency";
-import Link from "next/link";
+import textImg from "@/public/test.jpg";
 
 const catalogArr: ICatalogArr[] = [
     {
@@ -21,6 +22,12 @@ const catalogArr: ICatalogArr[] = [
         link: "/catalog/electricBike",
     },
     { name: "Весы", price: 350, img: scalesImg, link: "/catalog/scales" },
+    {
+        name: "Электроскуторы",
+        price: 40000,
+        img: textImg,
+        link: "/catalog/electricScooter",
+    },
 ];
 
 const renderItems = catalogArr.map(({ img, name, price, link }, i) => {

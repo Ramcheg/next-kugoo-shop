@@ -33,3 +33,4 @@ export * from "./Gallery/Gallery";
 export * from "./PriceForm/PriceForm";
 export * from "./OurSocial/OurSocial";
 export * from "./Breadcrumb/Breadcrumb";
+export * from "./AboutUs/AboutUs";

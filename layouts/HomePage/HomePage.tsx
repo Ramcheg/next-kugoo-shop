@@ -1,11 +1,11 @@
 import {
+    AboutUs,
     AdditionallyProduct,
     BigVideo,
     Blog,
     ContainerServices,
     DroneSection,
     OurAdvantages,
-    ProductCard,
     QuestionsAndAnswer,
 } from "@/components";
 import {
@@ -13,7 +13,6 @@ import {
     HomeCreditList,
     HomeProducts,
     HomePopularCategories,
-    HomeAboutAs,
 } from "@/components/HomePage";
 import { QaAHome } from "@/components/QuestionsAndAnswer/QuestionsAndAnswerArr";
 import { TestDriveBanner } from "@/components/TestDrivePage";
@@ -42,32 +41,29 @@ export default function HomePage(): JSX.Element {
                     <HomePopularCategories />
                 </section>
             </div>
-            <div className="containerBig bg-gray-light rounded-md py-6">
-                <div className="container mx-auto">
-                    <section>
-                        <HomeAboutAs />
-                    </section>
-                </div>
-            </div>
+            <section>
+                <AboutUs />
+            </section>
             <section className="container mx-auto my-5 md:my-16">
                 <OurAdvantages />
             </section>
             <div className="containerBig rounded-lg overflow-hidden h-[320px] md:h-[630px] mt-10 md:mt-24">
-                {/* <BigVideo /> */}
+                <BigVideo />
             </div>
-            <div className="max-w-[98vw] mt-8 md:mt-20 overflow-hidden">
-                <section>
-                    <Blog />
-                </section>
-            </div>
+            <section className="mt-8 md:mt-20">
+                <Blog />
+            </section>
+
             <div className="mt-10 md:mt-28">
                 <section>
                     <QuestionsAndAnswer arrayQaA={QaAHome} />
                 </section>
             </div>
-            <div className="container mx-auto mt-6 md:mt-12 md:block hidden">
-                <AdditionallyProduct />
-            </div>
+            <section>
+                <div className="container mx-auto mt-6 md:mt-12 md:block hidden">
+                    <AdditionallyProduct />
+                </div>
+            </section>
         </>
     );
 }

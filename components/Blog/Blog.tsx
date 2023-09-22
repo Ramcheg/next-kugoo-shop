@@ -46,55 +46,57 @@ export function Blog(): JSX.Element {
     });
 
     return (
-        <div className="relative">
-            <H className="ml-[2vw]" level={2}>
-                Новые статьи в блоге
-            </H>
-            <div ref={sliderRef} className="mt-5 md:mt-11 keen-slider">
-                <div className="keen-slider__slide ">
-                    <a href="#">
-                        <BlogItem />
-                    </a>
+        <div className="max-w-[98vw]  overflow-hidden">
+            <div className="relative">
+                <H className="ml-[2vw]" level={2}>
+                    Новые статьи в блоге
+                </H>
+                <div ref={sliderRef} className="mt-5 md:mt-11 keen-slider">
+                    <div className="keen-slider__slide ">
+                        <a href="#">
+                            <BlogItem />
+                        </a>
+                    </div>
+                    <div className="keen-slider__slide ">
+                        <a href="#">
+                            <BlogItem />
+                        </a>
+                    </div>
+                    <div className="keen-slider__slide ">
+                        <a href="#">
+                            <BlogItem />
+                        </a>
+                    </div>
+                    <div className="keen-slider__slide ">
+                        <a href="#">
+                            <BlogItem />
+                        </a>
+                    </div>
+                    <div className="keen-slider__slide ">
+                        <a href="#">
+                            <BlogItem />
+                        </a>
+                    </div>
+                    <div className="keen-slider__slide">
+                        <a href="#">
+                            <BlogItem />
+                        </a>
+                    </div>
+                    <div className="keen-slider__slide">
+                        <a href="#">
+                            <BlogItem />
+                        </a>
+                    </div>
                 </div>
-                <div className="keen-slider__slide ">
-                    <a href="#">
-                        <BlogItem />
-                    </a>
-                </div>
-                <div className="keen-slider__slide ">
-                    <a href="#">
-                        <BlogItem />
-                    </a>
-                </div>
-                <div className="keen-slider__slide ">
-                    <a href="#">
-                        <BlogItem />
-                    </a>
-                </div>
-                <div className="keen-slider__slide ">
-                    <a href="#">
-                        <BlogItem />
-                    </a>
-                </div>
-                <div className="keen-slider__slide">
-                    <a href="#">
-                        <BlogItem />
-                    </a>
-                </div>
-                <div className="keen-slider__slide">
-                    <a href="#">
-                        <BlogItem />
-                    </a>
-                </div>
+                {loaded && instanceRef.current && (
+                    <ArrowBtnCircle
+                        onClick={(e: any) =>
+                            e.stopPropagation() || instanceRef.current?.next()
+                        }
+                        className="absolute top-1/2 right-10"
+                    />
+                )}
             </div>
-            {loaded && instanceRef.current && (
-                <ArrowBtnCircle
-                    onClick={(e: any) =>
-                        e.stopPropagation() || instanceRef.current?.next()
-                    }
-                    className="absolute top-1/2 right-10"
-                />
-            )}
         </div>
     );
 }
