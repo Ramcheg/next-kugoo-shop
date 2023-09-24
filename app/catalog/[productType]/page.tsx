@@ -1,4 +1,4 @@
-import { CatalogTypeProductPage } from "@/layouts/CatalogTypeProductPage/CatalogTypeProductPage";
+import { CatalogTypePage } from "@/layouts/CatalogTypePage/CatalogTypePage";
 
 interface CatalogTypeProps {
     params: { productType: string };
@@ -7,5 +7,5 @@ interface CatalogTypeProps {
 export default function ProductType({
     params: { productType },
 }: CatalogTypeProps): JSX.Element {
-    return <CatalogTypeProductPage productType={productType} />;
+    return <CatalogTypePage productType={productType} />;
 }

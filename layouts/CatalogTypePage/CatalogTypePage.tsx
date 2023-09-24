@@ -1,5 +1,6 @@
 import { Breadcrumb, DroneSection } from "@/components";
-import { CatalogTypeProductBanner } from "@/components/CatalogTypeProductPage";
+import { CatalogTypeSort } from "@/components/CatalogTypePage";
+import { CatalogTypeBanner } from "@/components/CatalogTypePage";
 import { translateForRuLink } from "@/helpers/translateLinkToRu";
 import { FC } from "react";
 
@@ -7,7 +8,7 @@ interface CatalogProductTypeProps {
     productType: string;
 }
 
-export const CatalogTypeProductPage: FC<CatalogProductTypeProps> = ({
+export const CatalogTypePage: FC<CatalogProductTypeProps> = ({
     productType,
 }) => {
     const titleName = translateForRuLink(productType);
@@ -17,7 +18,7 @@ export const CatalogTypeProductPage: FC<CatalogProductTypeProps> = ({
                 <Breadcrumb />
             </div>
             <div className="mt-5">
-                <CatalogTypeProductBanner
+                <CatalogTypeBanner
                     titleName={
                         titleName?.translate ? titleName.translate : productType
                     }
@@ -26,6 +27,18 @@ export const CatalogTypeProductPage: FC<CatalogProductTypeProps> = ({
             <section className="mt-5">
                 <DroneSection />
             </section>
+            <div className="container mx-auto">
+                <div className="flex justify-between mt-6 md:mt-12">
+                    <div className="uppercase text-2xl font-medium">фильтр</div>
+                    <CatalogTypeSort />
+                </div>
+                <div>
+                    <article className="w-3/4">filters</article>
+                    <div>
+                        <div>content</div>
+                    </div>
+                </div>
+            </div>
         </>
     );
 };

@@ -5,7 +5,7 @@ interface CatalogTypeProductBannerProps {
     titleName: string;
 }
 
-export const CatalogTypeProductBanner: FC<CatalogTypeProductBannerProps> = ({
+export const CatalogTypeBanner: FC<CatalogTypeProductBannerProps> = ({
     titleName,
 }) => {
     return (
