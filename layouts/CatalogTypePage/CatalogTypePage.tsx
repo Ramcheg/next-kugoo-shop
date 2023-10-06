@@ -28,7 +28,7 @@ export const CatalogTypePage: FC<CatalogProductTypeProps> = ({
                 <DroneSection />
             </section>
             <div className="container mx-auto">
-                <div className="flex justify-between mt-6 md:mt-12">
+                <div className="flex justify-between mt-6 md:mt-12 items-center">
                     <div className="uppercase text-2xl font-medium">фильтр</div>
                     <CatalogTypeSort />
                 </div>
